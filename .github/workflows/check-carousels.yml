@@ -1,0 +1,43 @@
+name: Check carousels and build
+
+on:
+  push:
+    branches: [fix/smooth-carousels-merch]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: carousels-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+      NEXT_PUBLIC_GITHUB_PAGES: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install existing site dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build the Next.js site
+        run: npm run build
+      - name: Install browser check tools on the runner
+        run: |
+          npm install --prefix "$RUNNER_TEMP/carousel-check" --no-package-lock playwright
+          node "$RUNNER_TEMP/carousel-check/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Check static and exported pages
+        env:
+          NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
+        run: node scripts/check-carousels.mjs

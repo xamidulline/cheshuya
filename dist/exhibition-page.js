@@ -10,48 +10,23 @@
   const id = new URLSearchParams(window.location.search).get('id');
   const currentIndex = Math.max(0, exhibitions.findIndex((item) => item.id === id));
   const item = exhibitions[currentIndex];
-  let imageIndex = 0;
-  const photo = document.querySelector('.zine-photo');
   const title = document.querySelector('.zine-info h1');
-  const meta = document.querySelector('.zine-meta');
-  const place = document.querySelector('.exhibition-place');
-  const counter = document.querySelector('.counter');
   document.title = `${item.title} — Чешуя`;
   title.textContent = item.title;
-  meta.textContent = `Выставка · ${item.year}`;
-  place.textContent = item.place;
-  const render = () => {
-    photo.src = item.images[imageIndex];
-    photo.alt = item.title;
-    counter.textContent = `${imageIndex + 1} / ${item.images.length}`;
-  };
-  const controls = document.querySelector('.zine-controls');
-  if (item.images.length < 2) controls.hidden = true;
-  document.querySelector('.prev')?.addEventListener('click', () => { imageIndex = (imageIndex + item.images.length - 1) % item.images.length; render(); });
-  document.querySelector('.next')?.addEventListener('click', () => { imageIndex = (imageIndex + 1) % item.images.length; render(); });
-  let startX = 0;
-  let startY = 0;
-  const carousel = document.querySelector('.zine-carousel');
-  carousel?.setAttribute('tabindex', '0');
-  carousel?.addEventListener('keydown', (event) => {
-    if (item.images.length < 2) return;
-    if (event.key === 'ArrowLeft') { event.preventDefault(); imageIndex = (imageIndex + item.images.length - 1) % item.images.length; render(); }
-    if (event.key === 'ArrowRight') { event.preventDefault(); imageIndex = (imageIndex + 1) % item.images.length; render(); }
+  document.querySelector('.zine-meta').textContent = `Выставка · ${item.year}`;
+  document.querySelector('.exhibition-place').textContent = item.place;
+  document.querySelector('.zine-photo').alt = item.title;
+  const gallery = window.CheshuyaCarousel.mountImageGallery(document.querySelector('.zine-slide'), item.images, index => {
+    document.querySelector('.counter').textContent = `${index + 1} / ${item.images.length}`;
   });
-  carousel?.addEventListener('pointerdown', (event) => { if (event.pointerType !== 'mouse') { startX = event.clientX; startY = event.clientY; } });
-  carousel?.addEventListener('pointerup', (event) => {
-    const dx = event.clientX - startX;
-    const dy = event.clientY - startY;
-    if (item.images.length > 1 && Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy)) {
-      imageIndex = dx > 0 ? (imageIndex + item.images.length - 1) % item.images.length : (imageIndex + 1) % item.images.length;
-      render();
-    }
-  });
+  document.querySelector('.zine-controls').hidden = item.images.length < 2;
+  document.querySelector('.prev')?.addEventListener('click', () => gallery?.move(-1));
+  document.querySelector('.next')?.addEventListener('click', () => gallery?.move(1));
+  document.querySelector('.zine-carousel')?.setAttribute('tabindex', '0');
   const previous = exhibitions[(currentIndex + exhibitions.length - 1) % exhibitions.length];
   const next = exhibitions[(currentIndex + 1) % exhibitions.length];
   const prevLink = document.querySelector('.exhibition-prev');
   const nextLink = document.querySelector('.exhibition-next');
   prevLink.href = `exhibition.html?id=${previous.id}`;
   nextLink.href = `exhibition.html?id=${next.id}`;
-  render();
 })();

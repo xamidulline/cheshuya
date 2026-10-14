@@ -27,45 +27,9 @@
     if (!viewport) return;
     viewport.tabIndex = 0;
     viewport.setAttribute('aria-label', 'Галерея работ');
-    const step = () => Math.max(220, viewport.clientWidth * .8);
-    const move = (direction) => {
-      if (viewport.scrollWidth <= viewport.clientWidth + 2) return;
-      const atStart = viewport.scrollLeft <= 2;
-      const atEnd = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 2;
-      if (direction < 0 && atStart) viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
-      else if (direction > 0 && atEnd) viewport.scrollTo({ left: 0, behavior: 'smooth' });
-      else viewport.scrollBy({ left: direction * step(), behavior: 'smooth' });
-    };
-    viewport.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); }
-      if (event.key === 'ArrowRight') { event.preventDefault(); move(1); }
-    });
-    let pointerStart = 0, scrollStart = 0, startedAt = 0, dragging = false;
-    viewport.addEventListener('pointerdown', (event) => {
-      startedAt = viewport.scrollLeft;
-      if (event.pointerType !== 'mouse') return;
-      pointerStart = event.clientX;
-      scrollStart = viewport.scrollLeft;
-      dragging = true;
-      viewport.setPointerCapture?.(event.pointerId);
-    });
-    viewport.addEventListener('pointermove', (event) => {
-      if (!dragging) return;
-      const delta = event.clientX - pointerStart;
-      if (Math.abs(delta) > 3) viewport.scrollLeft = scrollStart - delta;
-    });
-    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => viewport.addEventListener(type, () => { dragging = false; }));
-    rail.querySelector('.rail-prev')?.addEventListener('click', (event) => { event.preventDefault(); event.stopImmediatePropagation(); move(-1); }, true);
-    rail.querySelector('.rail-next')?.addEventListener('click', (event) => { event.preventDefault(); event.stopImmediatePropagation(); move(1); }, true);
-    let scrollEndTimer;
-    viewport.addEventListener('scroll', () => {
-      window.clearTimeout(scrollEndTimer);
-      scrollEndTimer = window.setTimeout(() => {
-        if (dragging || viewport.scrollWidth <= viewport.clientWidth + 2) return;
-        if (viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 2) viewport.scrollTo({ left: 0, behavior: 'smooth' });
-        else if (viewport.scrollLeft <= 1 && startedAt > 2) viewport.scrollTo({ left: viewport.scrollWidth, behavior: 'smooth' });
-      }, 180);
-    }, { passive: true });
+    const controller = window.CheshuyaCarousel.createCardCarousel(viewport);
+    rail.querySelector('.rail-prev')?.addEventListener('click', () => controller.move(-1));
+    rail.querySelector('.rail-next')?.addEventListener('click', () => controller.move(1));
   };
   const makeMerchCarousel = () => {
     const section = document.querySelector('.merch-section');
