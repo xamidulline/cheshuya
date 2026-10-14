@@ -10,7 +10,7 @@
 .rail-scroll[data-animating],.rail-scroll[data-dragging],.carousel-rail[data-animating],.carousel-rail[data-dragging]{scroll-snap-type:none}
 .rail-scroll[data-dragging],.carousel-rail[data-dragging]{cursor:grabbing;user-select:none}
 .rail-scroll:focus-visible,.carousel-rail:focus-visible,.zine-carousel:focus-visible{outline:2px solid #171717;outline-offset:3px}
-.archive-image{position:relative;aspect-ratio:1;height:auto;background:#fff;overflow:hidden}
+.archive-image{position:relative;aspect-ratio:4/3;height:auto;background:#fff;overflow:hidden}
 .cyanotype-slide{position:relative;flex:0 0 min(100%,450px);height:auto;aspect-ratio:3/4;max-width:450px;background:#fff}
 .cyanotype-slide img{width:100%;height:100%;object-fit:contain}
 .rail-art .archive-image img,.rail-art .archive-card:hover .archive-image img{object-fit:contain;transform:none}
@@ -46,6 +46,3 @@
   .zine-slide img[data-active]{transition:none}
 }
 .zine-controls button{border:1px solid #ddd;background:#fff;font-size:22px}
-/* Preserve the existing landscape shape of other static archive cards. */
-.archive-image{aspect-ratio:4/3}
-.merch-section .archive-image{aspect-ratio:3/4}
