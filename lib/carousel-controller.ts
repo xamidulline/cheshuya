@@ -9,6 +9,7 @@ export function createCardCarousel(viewport: HTMLElement) {
   let lastTime = 0;
   let stops: number[] = [];
   let width = viewport.clientWidth;
+  let lastScroll = viewport.scrollLeft;
   let pointer: { id: number; x: number; scroll: number; dragging: boolean } | null = null;
   let suppressClick = false;
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -21,6 +22,7 @@ export function createCardCarousel(viewport: HTMLElement) {
     )));
   };
   const stop = () => {
+    if (width === viewport.clientWidth) lastScroll = viewport.scrollLeft;
     if (frame !== null) cancelAnimationFrame(frame);
     if (restoreFrame !== null) cancelAnimationFrame(restoreFrame);
     frame = restoreFrame = target = null;
@@ -46,8 +48,10 @@ export function createCardCarousel(viewport: HTMLElement) {
     const next = target + (offset + term) * decay;
     position = next;
     viewport.scrollLeft = next;
+    lastScroll = viewport.scrollLeft;
     if (Math.abs(next - target) < 0.75 && Math.abs(velocity) < 8) {
       viewport.scrollLeft = target;
+      lastScroll = viewport.scrollLeft;
       frame = target = null;
       velocity = lastTime = 0;
       restoreSnap();
@@ -79,7 +83,8 @@ export function createCardCarousel(viewport: HTMLElement) {
     const next = measure();
     if (width === viewport.clientWidth && next.length === stops.length &&
         next.every((position, index) => Math.abs(position - stops[index]) < 1)) return;
-    const index = nearestIndex(stops, target ?? viewport.scrollLeft);
+    // Browsers may re-snap before ResizeObserver runs. Keep the old geometry anchor.
+    const index = nearestIndex(stops, target ?? lastScroll);
     stop();
     pointer = null;
     viewport.removeAttribute("data-dragging");
@@ -88,6 +93,7 @@ export function createCardCarousel(viewport: HTMLElement) {
     if (stops.length) {
       viewport.setAttribute("data-animating", "");
       viewport.scrollLeft = stops[Math.min(index, stops.length - 1)];
+      lastScroll = viewport.scrollLeft;
       restoreSnap();
     }
   };
@@ -142,6 +148,9 @@ export function createCardCarousel(viewport: HTMLElement) {
     if (motion.matches && target !== null) { viewport.scrollLeft = target; stop(); }
   };
   const onDrag = (event: DragEvent) => event.preventDefault();
+  const rememberScroll = () => {
+    if (width === viewport.clientWidth) lastScroll = viewport.scrollLeft;
+  };
   viewport.addEventListener("pointerdown", onPointerDown, { passive: true });
   viewport.addEventListener("pointermove", onPointerMove, { passive: true });
   viewport.addEventListener("pointerup", onPointerUp);
@@ -152,6 +161,7 @@ export function createCardCarousel(viewport: HTMLElement) {
   viewport.addEventListener("keydown", onKey);
   viewport.addEventListener("click", onClick, true);
   viewport.addEventListener("dragstart", onDrag);
+  viewport.addEventListener("scroll", rememberScroll, { passive: true });
   motion.addEventListener("change", onMotion);
   return {
     move, refresh,
@@ -175,6 +185,7 @@ export function createCardCarousel(viewport: HTMLElement) {
       viewport.removeEventListener("keydown", onKey);
       viewport.removeEventListener("click", onClick, true);
       viewport.removeEventListener("dragstart", onDrag);
+      viewport.removeEventListener("scroll", rememberScroll);
       motion.removeEventListener("change", onMotion);
     },
   };

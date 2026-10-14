@@ -251,6 +251,7 @@ try {
     url: location.href,
     cyanotypes: document.querySelector("#cyanotype .rail-scroll")?.children.length,
     ready: document.readyState,
+    gallery: (() => { const stage = document.querySelector(".zine-slide"); return stage && { width: stage.clientWidth, scroll: stage.scrollLeft, active: Array.from(stage.children).findIndex(photo => photo.dataset.active === "true"), positions: Array.from(stage.children, photo => photo.getBoundingClientRect().left - stage.getBoundingClientRect().left), animating: stage.hasAttribute("data-animating") }; })(),
   }))), errors);
   throw error;
 } finally {
