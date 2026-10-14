@@ -175,6 +175,10 @@ async function checkGallery(path) {
   await page.setViewportSize({ width: 390, height: 844 });
   await sleep(150);
   await gallerySettled(rapidTarget);
+  await click(".zine-controls button:last-child");
+  await gallerySettled(Math.min(rapidTarget + 1, count - 1));
+  await click(".zine-controls button:first-child");
+  await gallerySettled(rapidTarget);
   await checkOverflow();
   await touchSwipe(".zine-slide");
   await page.waitForFunction(previous => {

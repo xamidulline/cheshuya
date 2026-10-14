@@ -254,7 +254,10 @@ function createImageGallery(stage, onChange = () => {}) {
     };
     photos[current].decode().then(ready, ready);
   };
-  const move = (direction) => show(requested + direction);
+  const move = (direction) => {
+    if (!pending && !stage.hasAttribute("data-animating")) requested = selectedIndex();
+    show(requested + direction);
+  };
   const onKey = (event) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();

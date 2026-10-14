@@ -252,7 +252,10 @@ export function createImageGallery(stage: HTMLElement, onChange: (index: number)
     };
     photos[current].decode().then(ready, ready);
   };
-  const move = (direction: -1 | 1) => show(requested + direction);
+  const move = (direction: -1 | 1) => {
+    if (!pending && !stage.hasAttribute("data-animating")) requested = selectedIndex();
+    show(requested + direction);
+  };
   const onKey = (event: KeyboardEvent) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
