@@ -157,6 +157,11 @@ function createCardCarousel(viewport) {
   motion.addEventListener("change", onMotion);
   return {
     move, refresh,
+    goToIndex(index) {
+      stops = measure();
+      const destination = stops[Math.max(0, Math.min(stops.length - 1, index))];
+      if (destination !== undefined) goTo(destination);
+    },
     destroy() {
       observer.disconnect();
       mutation.disconnect();
@@ -177,18 +182,15 @@ function createCardCarousel(viewport) {
   };
 }
 
-// All photos share one fixed stage. Decode the requested photo before fading it in.
+// Detail galleries use the same measured horizontal rail as the home page.
 function createImageGallery(stage, onChange = () => {}) {
   const photos = Array.from(stage.querySelectorAll("img"));
   const carousel = stage.parentElement || stage;
+  const controller = createCardCarousel(stage);
   let requested = 0;
   let version = 0;
-  let pointer = null;
-  photos.forEach((photo, index) => {
-    photo.draggable = false;
-    photo.dataset.active = String(index === 0);
-    photo.setAttribute("aria-hidden", String(index !== 0));
-  });
+  let pending = false;
+  let syncFrame = null;
   const loadPhoto = (photo) => {
     if (photo.dataset.gallerySrc && !photo.dataset.galleryLoaded) {
       photo.dataset.galleryLoaded = "true";
@@ -198,62 +200,81 @@ function createImageGallery(stage, onChange = () => {}) {
     }
     photo.loading = "eager";
   };
+  const prepare = (index) => {
+    for (const candidate of [index - 1, index, index + 1]) {
+      if (photos[candidate]) loadPhoto(photos[candidate]);
+    }
+  };
+  const selectedIndex = () => {
+    const left = stage.getBoundingClientRect().left + stage.clientLeft;
+    const distances = photos.map(photo => Math.abs(photo.getBoundingClientRect().left - left));
+    return distances.reduce((nearest, distance, index) => distance < distances[nearest] ? index : nearest, 0);
+  };
+  const sync = () => {
+    syncFrame = null;
+    if (!photos.length || !stage.clientWidth) return;
+    const current = selectedIndex();
+    prepare(current);
+    carousel.style.setProperty("--gallery-height", stage.clientHeight + "px");
+    photos.forEach((photo, index) => {
+      photo.draggable = false;
+      photo.dataset.active = String(index === current);
+      photo.setAttribute("aria-hidden", String(index !== current));
+    });
+    if (!pending && !stage.hasAttribute("data-animating")) requested = current;
+    onChange(current);
+  };
+  const onScroll = () => {
+    if (syncFrame === null) syncFrame = requestAnimationFrame(sync);
+  };
   const show = (index) => {
     if (!photos.length) return;
-    requested = (index + photos.length) % photos.length;
+    requested = Math.max(0, Math.min(photos.length - 1, index));
     const current = requested;
     const ticket = ++version;
-    const image = photos[current];
-    loadPhoto(image);
+    pending = true;
+    prepare(current);
     stage.setAttribute("aria-busy", "true");
-    const reveal = () => {
+    const ready = () => {
       if (ticket !== version) return;
+      pending = false;
       stage.setAttribute("aria-busy", "false");
-      if (!image.naturalWidth) return;
-      photos.forEach((photo, photoIndex) => {
-        photo.dataset.active = String(photoIndex === current);
-        photo.setAttribute("aria-hidden", String(photoIndex !== current));
-      });
-      onChange(current);
-      // Warm just the next photo instead of downloading an entire long gallery.
-      const next = photos[(current + 1) % photos.length];
-      if (next) loadPhoto(next);
+      if (photos[current].naturalWidth) controller.goToIndex(current);
     };
-    image.decode().then(reveal, reveal);
+    photos[current].decode().then(ready, ready);
   };
   const move = (direction) => show(requested + direction);
   const onKey = (event) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
+    event.stopPropagation();
     move(event.key === "ArrowLeft" ? -1 : 1);
   };
-  const onDown = (event) => {
-    if (event.pointerType === "mouse" || !event.isPrimary) return;
-    pointer = { id: event.pointerId, x: event.clientX, y: event.clientY };
-    stage.setPointerCapture(event.pointerId);
+  const onGesture = () => {
+    version++;
+    pending = false;
+    stage.setAttribute("aria-busy", "false");
+    requested = selectedIndex();
   };
-  const onUp = (event) => {
-    if (!pointer || pointer.id !== event.pointerId) return;
-    const dx = event.clientX - pointer.x, dy = event.clientY - pointer.y;
-    pointer = null;
-    if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy)) move(dx > 0 ? -1 : 1);
-  };
-  const reset = () => { pointer = null; };
-  carousel.addEventListener("keydown", onKey);
-  stage.addEventListener("pointerdown", onDown, { passive: true });
-  stage.addEventListener("pointerup", onUp);
-  stage.addEventListener("pointercancel", reset);
-  stage.addEventListener("lostpointercapture", reset);
-  show(0);
+  const observer = new ResizeObserver(sync);
+  observer.observe(stage);
+  carousel.addEventListener("keydown", onKey, true);
+  stage.addEventListener("pointerdown", onGesture, { capture: true, passive: true });
+  stage.addEventListener("wheel", onGesture, { passive: true });
+  stage.addEventListener("scroll", onScroll, { passive: true });
+  sync();
   return {
     move, show,
     destroy() {
       version++;
-      carousel.removeEventListener("keydown", onKey);
-      stage.removeEventListener("pointerdown", onDown);
-      stage.removeEventListener("pointerup", onUp);
-      stage.removeEventListener("pointercancel", reset);
-      stage.removeEventListener("lostpointercapture", reset);
+      if (syncFrame !== null) cancelAnimationFrame(syncFrame);
+      observer.disconnect();
+      controller.destroy();
+      carousel.removeEventListener("keydown", onKey, true);
+      stage.removeEventListener("pointerdown", onGesture, true);
+      stage.removeEventListener("wheel", onGesture);
+      stage.removeEventListener("scroll", onScroll);
+      carousel.style.removeProperty("--gallery-height");
     },
   };
 }
@@ -278,6 +299,10 @@ function mountImageGallery(stage, sources, onChange) {
     return image;
   });
   stage.replaceChildren(...photos);
+  const previous = stage.parentElement?.querySelector(".zine-controls button:first-child");
+  const next = stage.parentElement?.querySelector(".zine-controls button:last-child");
+  if (previous) previous.textContent = "←";
+  if (next) next.textContent = "→";
   return createImageGallery(stage, onChange);
 }
 

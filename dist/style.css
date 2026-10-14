@@ -22,27 +22,31 @@
 .carousel .image-wrap{position:relative;aspect-ratio:3/4;background:#fff}
 .carousel .image-wrap img{object-fit:contain}
 .card-caption{display:flex;justify-content:space-between;gap:12px;padding-top:12px}
-/* The photo stage keeps its dimensions throughout a 350 ms crossfade. */
+/* Fixed photo stage with the same horizontal motion and native swipe as home rails. */
 .zine-page{width:min(1080px,calc(100% - 32px));margin:auto;padding:16px 0 64px;min-height:100svh;height:100svh;display:flex;flex-direction:column;overflow:hidden}
 .zine-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:stretch;flex:1;min-height:0}
 .zine-carousel{position:relative;display:flex;flex-direction:column;height:100%;min-width:0;min-height:0;overflow:hidden}
-.zine-slide{position:relative;flex:1;min-height:0;width:100%;background:#fff;overflow:hidden;touch-action:pan-y pinch-zoom}
-.zine-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
-.zine-slide img[data-active]{opacity:0;transition:opacity 350ms cubic-bezier(.2,.7,.2,1);pointer-events:none}
-.zine-slide img[data-active=true]{opacity:1;z-index:1}
-.zine-controls{position:absolute;z-index:2;top:50%;left:16px;right:8px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
+.zine-slide{position:relative;display:flex;flex:1 1 0;min-width:0;min-height:0;width:100%;background:#fff;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:auto;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y pinch-zoom}
+.zine-slide img{position:relative;inset:auto;flex:0 0 100%;min-width:0;width:100%;height:100%;object-fit:contain;object-position:center;scroll-snap-align:start}
+.zine-slide::-webkit-scrollbar{display:none}
+.zine-slide[data-animating],.zine-slide[data-dragging]{scroll-snap-type:none}
+.zine-slide[data-dragging]{cursor:grabbing;user-select:none}
+.zine-controls{position:absolute;z-index:2;top:calc(var(--gallery-height,100%)/2);left:5px;right:5px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
 .zine-controls[hidden]{display:none}
-.zine-controls button{width:36px;height:36px;min-width:36px;box-sizing:border-box;border-radius:999px;pointer-events:auto}
+.zine-controls button{box-sizing:border-box;pointer-events:auto}
 .zine-controls span{display:none}
 @media(max-width:700px){
   .carousel-card{flex-basis:82%}
   .zine-page{height:auto;overflow:visible;padding-bottom:32px}
   .zine-layout{grid-template-columns:minmax(0,1fr)}
   .zine-carousel{height:auto;width:100%;overflow:visible}
-  .zine-slide{flex:none;aspect-ratio:3/4}
-  .zine-controls{right:16px}
+  .zine-slide{flex:none;aspect-ratio:3/4;height:auto}
 }
-@media(prefers-reduced-motion:reduce){
-  .zine-slide img[data-active]{transition:none}
-}
-.zine-controls button{border:1px solid #ddd;background:#fff;font-size:22px}
+
+/* Shared home and detail-page arrow buttons. */
+.rail-arrow,.zine-controls button{display:grid;place-items:center;width:30px;height:30px;min-width:30px;padding:0;border:1px solid #e3e3e3;border-radius:50%;background:#fff;color:#171717;box-shadow:0 1px 2px rgba(0,0,0,.06);font:14px/1 Arial,Helvetica,sans-serif;transition:transform .2s ease,background-color .2s ease,border-color .2s ease}
+.rail-arrow{transform:translateY(-50%)}
+.rail-arrow:hover,.zine-controls button:hover{border-color:#d2d2d2;background:#f2f2f2}
+.rail-arrow:focus-visible,.zine-controls button:focus-visible{outline:2px solid #171717;outline-offset:2px}
+.archive-page .rail-arrow:active{transform:translateY(-50%) scale(.96)}
+.zine-controls button:active{transform:scale(.96)}

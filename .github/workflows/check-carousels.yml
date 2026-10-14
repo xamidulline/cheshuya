@@ -1,8 +1,6 @@
 name: Check carousels and build
 
 on:
-  push:
-    branches: [fix/smooth-carousels-merch]
   pull_request:
     branches: [main]
 

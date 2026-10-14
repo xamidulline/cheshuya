@@ -29,6 +29,7 @@ await new Promise(done => server.listen(0, "127.0.0.1", done));
 const origin = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 const errors = [];
+const homeArrowStyles = {};
 const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, hasTouch: true });
 const page = await context.newPage();
 page.on("pageerror", error => errors.push(error.message));
@@ -127,6 +128,20 @@ async function checkNativeSwipe() {
   assert.ok(stops.some(stop => Math.abs(stop - left) <= 2), "Native swipe must settle at a card");
   await checkOverflow();
 }
+async function getArrowStyle(selector) {
+  return page.locator(selector).first().evaluate(button => ({
+    ...Object.fromEntries(["width", "height", "minWidth", "borderRadius", "borderTopWidth", "borderTopColor", "backgroundColor", "color", "boxShadow", "padding", "fontSize", "lineHeight"].map(name => [name, getComputedStyle(button)[name]])),
+    glyph: button.textContent.trim(),
+  }));
+}
+async function gallerySettled(index) {
+  await page.waitForFunction(index => {
+    const stage = document.querySelector(".zine-slide");
+    const photo = stage?.querySelectorAll("img")[index];
+    return stage && photo && !stage.hasAttribute("data-animating") &&
+      Math.abs(photo.getBoundingClientRect().left - stage.getBoundingClientRect().left) <= 1;
+  }, index);
+}
 async function checkGallery(path) {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(origin + path);
@@ -136,25 +151,42 @@ async function checkGallery(path) {
   const arrows = await page.locator(".zine-controls").boundingBox();
   const count = await stage.locator("img").count();
   assert.ok(count >= 3);
+  const expectedButtons = homeArrowStyles[path.startsWith("/static/") ? "static" : "next"];
+  assert.deepEqual(await getArrowStyle(".zine-controls button:last-child"), expectedButtons, "Detail arrows must match the home arrows");
   await click(".zine-controls button:last-child");
-  await page.waitForFunction(() => document.querySelector(".zine-slide img:nth-child(2)")?.dataset.active === "true");
+  await page.waitForFunction(() => {
+    const rail = document.querySelector(".zine-slide");
+    return rail.scrollLeft > 1 && rail.scrollLeft < rail.clientWidth - 1;
+  });
+  await gallerySettled(1);
   assert.deepEqual(await stage.boundingBox(), before, "Image changes must not resize the stage");
   assert.deepEqual(await page.locator(".zine-controls").boundingBox(), arrows, "Image changes must not move arrows");
   assert.equal(await stage.locator("img").first().evaluate(element => getComputedStyle(element).objectFit), "contain");
   assert.equal(await stage.evaluate(element => getComputedStyle(element).backgroundColor), "rgb(255, 255, 255)");
-  assert.equal(await stage.locator("img").first().evaluate(element => getComputedStyle(element).transitionDuration), "0.35s");
+  assert.equal(await stage.evaluate(element => getComputedStyle(element).scrollSnapType), "x mandatory");
+  assert.equal(await stage.locator("img").first().evaluate(element => getComputedStyle(element).opacity), "1");
   await page.evaluate(() => {
     const b = document.querySelector(".zine-controls button:last-child");
     b.click(); b.click();
     document.querySelector(".zine-controls button:first-child").click();
   });
-  await page.waitForFunction(() => document.querySelector(".zine-slide img:nth-child(3)")?.dataset.active === "true");
+  const rapidTarget = Math.max(0, Math.min(3, count - 1) - 1);
+  await gallerySettled(rapidTarget);
   await page.setViewportSize({ width: 390, height: 844 });
-  await sleep(100);
+  await sleep(150);
+  await gallerySettled(rapidTarget);
   await checkOverflow();
   await touchSwipe(".zine-slide");
-  await page.waitForFunction(index => document.querySelectorAll(".zine-slide img")[index]?.dataset.active === "true", 3 % count);
-  await sleep(400);
+  await page.waitForFunction(previous => {
+    const stage = document.querySelector(".zine-slide");
+    return stage.scrollLeft > previous * stage.clientWidth + 20;
+  }, rapidTarget);
+  await sleep(1200);
+  const stops = await destinations(stage);
+  const left = await stage.evaluate(element => element.scrollLeft);
+  assert.ok(stops.some(stop => Math.abs(stop - left) <= 2), "Gallery swipe must snap just like the home rail");
+  const active = await stage.evaluate(element => Array.from(element.querySelectorAll("img")).findIndex(photo => photo.dataset.active === "true"));
+  assert.ok(active > rapidTarget, "The counter must follow a native swipe");
   await checkOverflow();
 }
 async function checkMixedCards() {
@@ -185,6 +217,7 @@ try {
     await checkMerch(otherRatio);
     await checkRail();
     await checkNativeSwipe();
+    homeArrowStyles[home.startsWith("/static/") ? "static" : "next"] = await getArrowStyle("#cyanotype .rail-next");
     console.log("PASS home: ratios, card positions, repeated clicks, resize, native swipe, overflow", home);
   }
   await checkMixedCards();
@@ -195,7 +228,7 @@ try {
     "/cheshuya/zines/ubezhishche/", "/cheshuya/zines/sloi/",
   ]) {
     await checkGallery(path);
-    console.log("PASS gallery: stable stage and arrows, 350ms fade, contain, rapid clicks, swipe, overflow", path);
+    console.log("PASS gallery: home-style horizontal motion and buttons, stable stage, contain, rapid clicks, native swipe, overflow", path);
   }
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(origin + "/static/index.html");
@@ -206,6 +239,9 @@ try {
   await settled("#cyanotype .rail-scroll", stops[1]);
   await page.goto(origin + "/static/zine-sloi.html");
   await page.waitForFunction(() => document.querySelector(".zine-slide img[data-active=true]")?.naturalWidth > 0);
+  await click(".zine-controls button:last-child");
+  await gallerySettled(1);
+  assert.equal(await page.locator(".zine-slide").evaluate(element => element.hasAttribute("data-animating")), false);
   assert.equal(await page.locator(".zine-slide img").first().evaluate(element => getComputedStyle(element).transitionDuration), "0s");
   await checkOverflow();
   assert.deepEqual(errors, [], "No uncaught browser errors");
