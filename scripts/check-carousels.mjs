@@ -13,7 +13,8 @@ const server = createServer(async (request, response) => {
     const isStatic = pathname.startsWith("/static/");
     const base = resolve(root, isStatic ? "dist" : "out");
     let relative = pathname.slice(isStatic ? 8 : 10);
-    if (!extname(relative)) relative += relative.endsWith("/") ? "index.html" : "/index.html";
+    if (!relative || relative.endsWith("/")) relative += "index.html";
+    else if (!extname(relative)) relative += "/index.html";
     const file = resolve(base, relative);
     if (!file.startsWith(base + sep)) throw new Error("Invalid path");
     const body = await readFile(file);
@@ -209,6 +210,13 @@ try {
   await checkOverflow();
   assert.deepEqual(errors, [], "No uncaught browser errors");
   console.log("PASS reduced motion and browser errors");
+} catch (error) {
+  console.error("Browser diagnostics", JSON.stringify(await page.evaluate(() => ({
+    url: location.href,
+    cyanotypes: document.querySelector("#cyanotype .rail-scroll")?.children.length,
+    ready: document.readyState,
+  }))), errors);
+  throw error;
 } finally {
   await context.close();
   await browser.close();

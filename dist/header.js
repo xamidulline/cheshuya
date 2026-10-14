@@ -2,6 +2,8 @@
   const header = document.querySelector('.archive-header, .catalog-header, .zine-header');
   if (!header) return;
   const isHome = header.classList.contains('archive-header');
+  const ready = callback => document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', callback, { once: true }) : callback();
 
   const isTelegramIOS = /iP(hone|ad|od)/.test(navigator.userAgent)
     && (/Telegram/i.test(navigator.userAgent) || /t\.me\//i.test(document.referrer));
@@ -60,7 +62,7 @@
       viewport.append(slide);
     });
   };
-  window.setTimeout(() => {
+  ready(() => {
     setResponsiveImage('.street-feature .feature-image img', 'new-site-assets/environment/street-feature');
     setResponsiveImage('#zines .archive-card:nth-of-type(2) img', 'new-site-assets/zines/ubezhishche/IMG_20200621_165755');
     setResponsiveImage('#zines .archive-card:nth-of-type(3) img', 'new-site-assets/zines/sloi/DboMwpEfEh4');
@@ -73,7 +75,7 @@
     setResponsiveImage('.catalog-card-link:nth-of-type(3) .catalog-image img', 'new-site-assets/zines/sloi/DboMwpEfEh4');
     document.querySelectorAll('.rail').forEach(rail => enableRailInteractions(rail));
     makeMerchCarousel();
-  }, 0);
+  });
 
   if (isHome) {
     const stage = document.querySelector('.logo-stage');
@@ -113,7 +115,7 @@
     window.addEventListener('scroll', render, { passive: true });
     logo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     logo.style.cursor = 'pointer';
-    window.setTimeout(() => {
+    ready(() => {
       const tabs = [...document.querySelectorAll('.static-tabs [data-tab]')];
       const content = [...document.querySelectorAll('.tab-content')];
       const drawer = document.querySelector('.static-menu');
@@ -184,7 +186,7 @@
       });
       const initialTarget = window.location.hash.slice(1);
       if (initialTarget && document.getElementById(initialTarget)) openSection(initialTarget);
-    }, 0);
+    });
     return;
   }
 
