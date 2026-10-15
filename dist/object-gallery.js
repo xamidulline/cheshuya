@@ -12,7 +12,7 @@
     const base = 'images/new-site-assets/objects/object-0'+(active+1);
     const image = dialog.querySelector('img');
     image.sizes = '(max-width: 700px) calc(100vw - 24px), min(1068px, calc(100vw - 64px))';
-    image.srcset = [600,1200,2000].map(w => base+'-'+w+'.webp '+w+'w').join(', ');
+    image.srcset = [400, 600, 800, 1200, 2000].map(w => base+'-'+w+'.webp '+w+'w').join(', ');
     image.src = base+'-1200.webp';
     image.alt = descriptions[active];
     dialog.querySelector('.object-lightbox-counter').textContent = (active+1)+' / '+buttons.length;

@@ -6,3 +6,13 @@ out
 # Локальные оригиналы: в репозиторий попадают только оптимизированные WebP.
 images-source/*
 !images-source/.gitkeep
+
+# Derived responsive variants generated on the build/publish runner
+public/images/**/*-192.webp
+public/images/**/*-400.webp
+public/images/**/*-800.webp
+dist/images/**/*-192.webp
+dist/images/**/*-400.webp
+dist/images/**/*-800.webp
+site-audit.json
+audit-home-*.png

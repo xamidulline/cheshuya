@@ -30,8 +30,6 @@ jobs:
           cache: pnpm
       - name: Install existing site dependencies
         run: pnpm install --frozen-lockfile
-      - name: Generate light gallery previews
-        run: node scripts/generate-thumbnails.mjs
       - name: Build the Next.js site
         run: npm run build
       - name: Install browser check tools on the runner

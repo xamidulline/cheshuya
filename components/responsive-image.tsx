@@ -1,6 +1,6 @@
 import type { ImgHTMLAttributes } from "react";
 
-const widths = [600, 1200, 2000] as const;
+const widths = [400, 600, 800, 1200, 2000] as const;
 const supportedSource = /\.(avif|jpe?g|png|tiff?|webp)$/i;
 const basePath = process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/cheshuya" : "";
 

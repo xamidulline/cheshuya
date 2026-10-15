@@ -320,7 +320,7 @@ function mountImageGallery(stage, sources, onChange) {
     let srcset = typeof source === "string" ? "" : source.srcset || "";
     if (!srcset && src.startsWith("media/")) {
       const name = decodeURIComponent(src.slice(6)).replace(/\.[^.]+$/, "").split("/").map(encodeURIComponent).join("/");
-      srcset = [600, 1200, 2000].map(width => `images/${name}-${width}.webp ${width}w`).join(", ");
+      srcset = [400, 600, 800, 1200, 2000].map(width => `images/${name}-${width}.webp ${width}w`).join(", ");
     }
     image.className = "zine-photo";
     image.alt = original?.alt || "Работа Чешуи";

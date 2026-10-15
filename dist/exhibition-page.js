@@ -19,7 +19,7 @@
     const base = `images/${window.cheshuyaExhibitionBase(item, index + 1)}`;
     return {
       src: `${base}-1200.webp`,
-      srcset: `${base}-600.webp 600w, ${base}-1200.webp 1200w, ${base}-2000.webp 2000w`,
+      srcset: `${base}-400.webp 400w, ${base}-600.webp 600w, ${base}-800.webp 800w, ${base}-1200.webp 1200w, ${base}-2000.webp 2000w`,
     };
   });
   const gallery = window.CheshuyaCarousel.mountImageGallery(

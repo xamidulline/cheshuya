@@ -9,7 +9,7 @@
     ];
     const images = cyanotypeNames.map(name => ({
       src: `images/new-site-assets/cyanotypes/${name}-1200.webp`,
-      srcset: `images/new-site-assets/cyanotypes/${name}-600.webp 600w, images/new-site-assets/cyanotypes/${name}-1200.webp 1200w, images/new-site-assets/cyanotypes/${name}-2000.webp 2000w`
+      srcset: `images/new-site-assets/cyanotypes/${name}-400.webp 400w, images/new-site-assets/cyanotypes/${name}-600.webp 600w, images/new-site-assets/cyanotypes/${name}-800.webp 800w, images/new-site-assets/cyanotypes/${name}-1200.webp 1200w, images/new-site-assets/cyanotypes/${name}-2000.webp 2000w`
     }));
     const counter = document.querySelector('.counter');
     const carousel = document.querySelector('.zine-carousel');

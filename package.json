@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/generate-thumbnails.mjs && next build",
     "start": "next start",
-    "images:optimize": "node scripts/optimize-images.mjs"
+    "images:optimize": "node scripts/optimize-images.mjs && node scripts/generate-thumbnails.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.2.0",
