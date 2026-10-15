@@ -35,7 +35,7 @@ jobs:
         run: npm run build
       - name: Install browser check tools on the runner
         run: |
-          npm install --prefix "$RUNNER_TEMP/carousel-check" --no-package-lock playwright
+          npm install --prefix "$RUNNER_TEMP/carousel-check" --no-package-lock playwright axe-core
           node "$RUNNER_TEMP/carousel-check/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Check static and exported pages
         env:
@@ -51,6 +51,7 @@ jobs:
         if: always()
         env:
           NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
+          AUDIT_ASSERT: "true"
           AUDIT_BASE_DIR: ${{ runner.temp }}/site-before/dist
         run: node scripts/audit-site.mjs
       - name: Save audit measurements
@@ -58,5 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frontend-audit
-          path: site-audit.json
+          path: |
+            site-audit.json
+            audit-home-*.png
           if-no-files-found: ignore

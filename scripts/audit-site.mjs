@@ -3,7 +3,8 @@ import { createServer } from "node:http";
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { createRequire } from "node:module";
-const { chromium } = createRequire(import.meta.url)("playwright");
+const require = createRequire(import.meta.url);
+const { chromium } = require("playwright");
 const types = { ".html":"text/html", ".js":"text/javascript", ".css":"text/css", ".svg":"image/svg+xml", ".webp":"image/webp", ".jpg":"image/jpeg", ".png":"image/png" };
 async function serve(dir) {
   const root=resolve(dir);
@@ -40,7 +41,13 @@ async function measure(origin,path) {
     new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.auditVitals.cls+=e.value;}).observe({type:"layout-shift",buffered:true});
   });
   await page.goto(origin+"/"+path,{waitUntil:"domcontentloaded",timeout:90000});
-  await wait(4000);
+  try {
+    await page.waitForFunction(() => {
+      const image = document.querySelector('.street-feature img, .zine-slide img, .catalog-image img');
+      return !image || (image.complete && image.naturalWidth > 0);
+    }, null, { timeout: 60000 });
+  } catch { errors.push('Primary image did not load within 60 seconds'); }
+  await wait(1500);
   const data=await page.evaluate(()=>({
     ...window.auditVitals,
     bytes:performance.getEntriesByType("resource").reduce((s,r)=>s+r.encodedBodySize,0),
@@ -53,7 +60,7 @@ async function measure(origin,path) {
     unlabeledButtons:[...document.querySelectorAll("button")].filter(b=>!b.getAttribute("aria-label")&&!b.textContent.trim()).length,
     blockingScripts:[...document.querySelectorAll("head script[src]:not([defer]):not([type=module])")].map(s=>s.getAttribute("src")),
   }));
-  if(path==="index.html"){
+  try { if(path==="index.html"){
     await page.locator(".language-button").click();await wait(100);
     data.english=await page.locator("html").getAttribute("lang");
     await page.locator(".header-controls button:last-child").click();
@@ -61,10 +68,12 @@ async function measure(origin,path) {
     data.menuEscape=await page.locator(".static-menu").evaluate(e=>e.hidden);
   }else{
     await page.locator(".catalog-burger,.zine-burger").click();
-    await page.locator(".zine-menu-close").click();await wait(300);
+    await page.locator(".zine-menu-close").click({timeout:2500});await wait(300);
     data.menuClosed=await page.locator(".zine-menu").evaluate(e=>e.hidden);
   }
+  } catch(error) { errors.push("Interaction failed: " + error.message.split("\n")[0]); }
   data.errors=errors;data.failed=failed;data.requests=requests;
+  console.log("AUDIT_SUMMARY", path, JSON.stringify({lcp:data.lcp,cls:data.cls,bytes:data.bytes,resources:data.resources,errors:data.errors}));
   await context.close();return data;
 }
 try {
@@ -88,6 +97,69 @@ try {
       const broken=[];
       for(const url of links){const r=await context.request.get(url);if(!r.ok())broken.push({url,status:r.status()});}
       results[name].brokenLinks=broken;
+      if(name === "after"){
+        const errors=[],badResources=[],accessibility=[],checkedAssets=new Set();
+        page.on("pageerror",e=>errors.push(e.message));
+        page.on("response",r=>{if(r.status()>=400)badResources.push({url:r.url(),status:r.status()});});
+        const paths=pages.filter(p=>p!=="exhibition.html").concat([
+          "exhibition.html?id=polya-prisutstviya","exhibition.html?id=uyazvimoe-mesto","exhibition.html?id=portal",
+          "exhibition.html?id=black-show","exhibition.html?id=rusty-box","exhibition.html?id=sleepy-stupor",
+          "exhibition.html?id=deep-woods-cold-winters","exhibition.html?id=rekviem-po-zhek-artu"
+        ]);
+        const axeSource=await readFile(require.resolve("axe-core/axe.min.js"),"utf8");
+        for(const path of paths){
+          await page.setViewportSize({width:390,height:844});
+          await page.goto(origin+"/"+path);
+          await page.addScriptTag({content:axeSource});
+          const violations=await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21aa"]}})).violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))})));
+          if(violations.length)accessibility.push({path,violations});
+          for(const width of [320,390,768,1440]){
+            await page.setViewportSize({width,height:844});
+            assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"Overflow "+path+" at "+width);
+          }
+          for(const asset of await page.locator("img").evaluateAll(nodes=>nodes.flatMap(i=>[i.getAttribute("src"),i.dataset.gallerySrc,...(i.getAttribute("srcset")||i.dataset.gallerySrcset||"").split(",").map(s=>s.trim().split(" ")[0])]).filter(Boolean))){
+            const url=new URL(asset,page.url()).href;
+            if(checkedAssets.has(url))continue;
+            checkedAssets.add(url);
+            const response=await context.request.head(url);
+            assert.ok(response.ok(),"Missing image variant: "+url);
+          }
+          if(path==="index.html"){
+            await page.locator("#outside-tab").press("ArrowRight");
+            assert.equal(await page.locator("#inside").isVisible(),true);
+            await page.locator("#inside-tab").press("Home");
+            assert.equal(await page.locator("#outside").isVisible(),true);
+            await page.locator(".language-button").click();
+            assert.equal(await page.locator(".static-menu [data-target=objects]").textContent(),"Objects");
+            await page.locator(".language-button").click();
+            assert.equal(await page.locator("#zines h2").textContent(),"Печатные издания");
+            await page.locator(".header-controls button:last-child").click();
+            await page.locator(".static-menu button").last().press("Tab");
+            assert.equal(await page.locator(".static-menu-close").evaluate(e=>e===document.activeElement),true);
+            await page.keyboard.press("Escape");
+            await page.waitForFunction(()=>!document.querySelector("main").inert);
+            assert.equal(await page.locator(".header-controls button:last-child").evaluate(e=>e===document.activeElement),true);
+            await page.locator(".header-controls button:last-child").click();
+            await page.locator(".static-menu [data-target=objects]").click();
+            await page.waitForFunction(()=>!document.querySelector("#inside").hidden&&!document.querySelector("main").inert);
+            await page.goto(origin+"/index.html#exhibitions");
+            assert.equal(await page.locator("#inside").isVisible(),true);
+          }
+          console.log("PASS page: accessibility, image variants and responsive layout",path);
+        }
+        await page.goto(origin+"/exhibition.html?id=missing");
+        await page.waitForURL("**/catalog-exhibitions.html");
+        await page.goto(origin+"/index.html");
+        await page.setViewportSize({width:390,height:844});
+        await page.screenshot({path:"audit-home-mobile.png",fullPage:true});
+        await page.setViewportSize({width:1440,height:1000});
+        await page.screenshot({path:"audit-home-desktop.png",fullPage:true});
+        results.after.functional={errors,badResources,accessibility,checkedAssets:checkedAssets.size,pages:paths.length};
+        console.log("AUDIT_FUNCTIONAL",JSON.stringify(results.after.functional));
+        assert.deepEqual(errors,[]);
+        assert.deepEqual(badResources,[]);
+        assert.deepEqual(accessibility,[],"Accessibility regressions");
+      }
       console.log("AUDIT_LINKS",name,JSON.stringify(broken));
       await context.close();
     }finally{await new Promise(done=>server.close(done));}
@@ -95,7 +167,7 @@ try {
   await writeFile("site-audit.json",JSON.stringify(results,null,2));
   if(process.env.AUDIT_ASSERT==="true"){
     for(const [path,data] of Object.entries(results.after)){
-      if(path==="brokenLinks")continue;
+      if(path==="brokenLinks" || path==="functional")continue;
       assert.deepEqual(data.errors,[],"Browser errors: "+path);
       assert.deepEqual(data.failed,[],"Failed resources: "+path);
       assert.equal(data.overflow,false,"Overflow: "+path);

@@ -61,6 +61,7 @@
     ['#merch .section-description', 'The print refers to a street work made in Kazan in 2020.'],
     ['.inside-intro h1', 'Exploring forms'],
     ['.inside-intro p, #objects .section-description', 'Experiments with metal, ceramics, wood and other materials. The work combines techniques, studies material properties and leaves room for improvisation.'],
+    ['#drawings .section-description', 'Graphics and painting: series of works on paper, canvas and wood.'],
     ['#exhibitions h2', 'Exhibitions'], ['#objects h2', 'Objects'], ['#drawings h2', 'Drawings'],
     ['.section-heading a', 'view'],
     ['.static-menu p:first-of-type', 'Work in context'], ['.static-menu p:last-of-type', 'Work with material'],
