@@ -39,3 +39,19 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
         run: node scripts/check-carousels.mjs
+      - name: Prepare original site for comparison on GitHub
+        run: |
+          mkdir -p "$RUNNER_TEMP/site-before"
+          git archive 3f0a91e1d9adb3a0cae04dd4099172fdfa8c6fc9 dist | tar -x -C "$RUNNER_TEMP/site-before"
+      - name: Audit loading and page actions
+        env:
+          NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
+          AUDIT_BASE_DIR: ${{ runner.temp }}/site-before/dist
+        run: node scripts/audit-site.mjs
+      - name: Save audit measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-audit
+          path: site-audit.json
+          if-no-files-found: ignore
