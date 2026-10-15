@@ -1243,6 +1243,2022 @@
           "file": "new-site-assets/zines/ubezhishche/IMG_20200621_165935-2000.webp"
         }
       ]
+    },
+    "new-site-assets/zines/nedostatochno-pamyati/cover.jpg": {
+      "hash": "9791fe3d86307e6a15bbce4113210911dfd784563112527c22a299f8a7e9ed85",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/cover-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/cover-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/cover-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/zines/nedostatochno-pamyati/spread-01.jpg": {
+      "hash": "95d35641c9d8c2d6efa69918ee19a5932c244ae4d4c69ac0042a00ce2ebdf48b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/zines/nedostatochno-pamyati/spread-02.jpg": {
+      "hash": "a4d2d3942bb362ab1d8c181905f6f78a5ecc3ce9cf6c6928d9b7315459e5176f",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/zines/nedostatochno-pamyati/spread-03.jpg": {
+      "hash": "175a6c5548628b6e787075cafb9f35848a72a1eb8f7567adbd50409a1076eb61",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/zines/nedostatochno-pamyati/spread-04.jpg": {
+      "hash": "c450fb823ffb107042e38eebdcbdaf3ff33778da0b8e8c8decde3128d4591865",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/zines/nedostatochno-pamyati/spread-05.jpg": {
+      "hash": "6d09ac1b93b228187760b19668589af51b2b8a4231f7ed700e630d3ca1253e8c",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/zines/nedostatochno-pamyati/spread-05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/01.jpg": {
+      "hash": "4a175372603bdf28ce4753d568121d6239b0145baa6df2eaedc4530176a06c77",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/02.jpg": {
+      "hash": "649d5f7090ed8786c27d714f8900a935013e6eb0e1f54298008868a9ca759f4e",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/03.jpg": {
+      "hash": "885ec775b65966cdfc0386b4a8449f34744928fcd01142b54bb7232e0cfc0438",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/04.jpg": {
+      "hash": "a638f5fa1bc008d8f5dc698fc003fe5ce16c9142eaf28935c12e6e5d4e7c69b6",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/05.jpg": {
+      "hash": "373ea612361d977d6ff79ef99e95587055f1bdb4318234cc23d9eb9d2b56a124",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/06.jpg": {
+      "hash": "5402a063c377111da34657892478c90d296de098d44af89471c7d25ba9273c85",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/07.jpg": {
+      "hash": "d05ecf22e85393cbfdc4263cec9977b17533dd9dd55cccc86912bea39255858b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/08.jpg": {
+      "hash": "b03aa792f853b25828b988ccfd4864f16f71f5e9e2e50875306e16c783ff796d",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/09.jpg": {
+      "hash": "5a39d01a2fc171665135302723a005afc2de8004f9da8be4fc6f9954cb5afce4",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/10.jpg": {
+      "hash": "34dbbbe45bed8ed2990803d39a4d528aa9bb68fe1d3ca190557556a5d0741744",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/10-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/10-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/10-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/11.jpg": {
+      "hash": "08cfb4c318bed9305823728a013f9acaf63729a62c054c7a46353106d38cafdb",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/11-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/11-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/11-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/black-show/12.jpg": {
+      "hash": "86a262814405a11071c3dca5d2e8d03b9b5eb95fd4c3a8d48eac6e2de111a5f0",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/black-show/12-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/black-show/12-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/black-show/12-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/01.jpg": {
+      "hash": "36a79deb9b99ef1f2008fb40b1cf73eb548a1d21c6ed9765bc31d86d81f71c0a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/02.jpg": {
+      "hash": "8739c21f417a63c12c2ad09936e6f37580e275080a4cde4f17596896aac55d65",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/03.jpg": {
+      "hash": "7c511e767c430ea9cf1feec8d0f09b5e8cb6c6498ca85a39189e23ae8698a9e3",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/04.jpg": {
+      "hash": "c59a74619d38bc78892117b690b502e35d8aad431c2388e20d2debd1cd2b0e9a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/05.jpg": {
+      "hash": "2ac75f79d8135110405ce82eff2ca84a07c7c5c82967437aa76700cf42da135d",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/06.jpg": {
+      "hash": "46f73f279017044b10f9213ea3f3e9f2d6ef4faaba744c616f75fb89d58c13a0",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/07.jpg": {
+      "hash": "4210d66af039aec3551f164facf446d7749c0e05b86ad6604dfc84474edb9ca4",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/08.jpg": {
+      "hash": "83a96473c527b517bf08c27da06d84a9bc9513e6a8cfabdf62dfd25a8af35fb5",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/deep-woods-cold-winters/09.jpg": {
+      "hash": "846c8bd7dbda88d444473f00295c3e1b766e86b8ff7bcb88cb4f5d4184ef36e5",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/deep-woods-cold-winters/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/01.jpg": {
+      "hash": "a7391ea3c84a5dbcc559fd611475973f0d6394badf6bf1b2c8ee99ace3bd4957",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/02.jpg": {
+      "hash": "3124d53ccb077a1128613278da20a68a1a265805abf14d415dd2886920c44149",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/03.jpg": {
+      "hash": "92a773b954fc21946d59311f553135c3e7729e2a2c57559607df25a64444f39c",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/04.jpg": {
+      "hash": "e4ebf85a6928cc4d8dd308351ae279b95e0de329af1c444e3b939978abd407bb",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/05.jpg": {
+      "hash": "7eecd9c119117cfa82c5993722444906d945f2c36829e770d5356368e33cb04b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/06.jpg": {
+      "hash": "3d818f69c9873e9757ada14a7a89a91d88e2d1b4d6270793918f3d93a8e4a9b9",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/07.jpg": {
+      "hash": "722b8c028a0586e12e5831a9f7f94d4d63e733b7689bf00ac9cc69c9104beb6a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/08.jpg": {
+      "hash": "65c7e83465047c03f10dabd242ad721a54d9f5e4d466f967b43079cabed87f5c",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/09.jpg": {
+      "hash": "2a1ee5a0eef0d5818e2b649a9302466e08131d3eb2d88a7bfc7b35371911a321",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/10.jpg": {
+      "hash": "83d4fe7ea2eea846d00c519fda70745d066ed41c41728d1851ce317f17069b71",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/10-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/10-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/10-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/11.jpg": {
+      "hash": "ba42fced874b157d289cb3ddff7ff3c9b24f93161ee2c3be157b4a33204ed144",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/11-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/11-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/11-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/12.jpg": {
+      "hash": "7b424527302767b82002c0584c0c8bf906e90f538bddc9861d7ded3699a4e51a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/12-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/12-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/12-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/13.jpg": {
+      "hash": "89cf414a0b3697cb22183c0a6cbf76c03ad249019b4de6122b4aeec5e44d2c67",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/13-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/13-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/13-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/14.jpg": {
+      "hash": "5093e335e337c28e3b6d35e4461a47a2ba257c0a8718392fbdeac7205fae5b6f",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/14-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/14-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/14-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/15.jpg": {
+      "hash": "60a7fd1a4cc19a1780809872e594edf9a46bfeb21ccd47a9ba0c53df2df5961a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/15-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/15-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/15-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/16.jpg": {
+      "hash": "129d0d3c5a756d57e7f2eaca9cff1ac2facbbef2644dc26f43cffb9a3086eb15",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/16-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/16-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/16-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/17.jpg": {
+      "hash": "bd621c9de7d4ba71901146efa48f9c8a554758a36d7056f9bd55b30759106874",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/17-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/17-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/17-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/18.jpg": {
+      "hash": "50225871136de7daf356ad54a7a9d2a24295f1d293e5d2c197f567987804a61b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/18-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/18-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/18-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/19.jpg": {
+      "hash": "9584fbc7dc7ac81e4bef601dabfcfd410030dee18c48a3ddf5d38dc296b6c428",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/19-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/19-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/19-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/20.jpg": {
+      "hash": "7886c7bae496c3fea4b9971980029d9c29d84443d0522315f3e2fee1f999adb5",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/20-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/20-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/20-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/21.jpg": {
+      "hash": "7a98d875df498ee59dbae856377ec25eb82ee52fed79313737994e863a768e3a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/21-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/21-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/21-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/22.jpg": {
+      "hash": "d7c927c7f79a3bcefe74b22ef4e24349c96b698f3af70d71da2994d66b614e23",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/22-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/22-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/22-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/23.jpg": {
+      "hash": "f462112badce964a745e8a22250d006a9ba0bcf61d8694ba6d785e47bc7600d3",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/23-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/23-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/23-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/24.jpg": {
+      "hash": "be72e770fdd53533329153fe4f4f5b72010243acaea4224b10d36f6a37d03d40",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/24-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/24-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/24-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/25.jpg": {
+      "hash": "a037a9bf2b09f7701a0b829c81ec2eb0335f293953448013f8928d2a8d9d821a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/25-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/25-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/25-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/26.jpg": {
+      "hash": "c973cd4034a2114a7fdacf124f255f942eaa7504562cba090d2e0c777efc3b13",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/26-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/26-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/26-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/27.jpg": {
+      "hash": "d571203b9c49dc23a907e8f900dbfbdf96981a17e48a9fdf4d99dd8b3f1fb0ba",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/27-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/27-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/27-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/28.jpg": {
+      "hash": "83041a0b263569765e39dbbbfaa5070bbb37c061ba0a7e3188df492f495c66a3",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/28-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/28-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/28-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/29.jpg": {
+      "hash": "e541aacc000f926b70ed10bac7336f2dcb655320f532d369934911fca9ccdd01",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/29-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/29-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/29-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/polya-prisutstviya/30.jpg": {
+      "hash": "4f67d718adb0c37c9cfa4f0dbd2e349f38685339cadec3084a74206e79b5e53d",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/30-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/30-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/polya-prisutstviya/30-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/01.jpg": {
+      "hash": "2cc75112573a1ab25a581bd67faa9ebd8c595232039227188ee4da74f7fa81dc",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/02.jpg": {
+      "hash": "dc2dd31bf2b5af67b645d00fde198726e168fc782c0b504fe8754f7c4d500c14",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/03.jpg": {
+      "hash": "641a4b71d82ab6de41a1e2450c380171c4122527367b1cb7961e9bf321d01b07",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/04.jpg": {
+      "hash": "eaa118a717205578ade3a3009d0a8df74bb8692193b9802016f373ffaef89e21",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/05.jpg": {
+      "hash": "017c501ad581707fd8223fe81998c583259ca9aee9f97c85b266d425208ece52",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/06.jpg": {
+      "hash": "b0188fdb4cdd7a20539ab95c79eb25ccfac2793998bc7a6c638b2ae5661a3f83",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/07.jpg": {
+      "hash": "b571432d6e0e6d5c0faf0a789267eb85ea32854b3cba941a99d1bf7dcad944a3",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/08.jpg": {
+      "hash": "1ee47bbee175c5db553bd014d92993c9096e391d704a463776a166175dc28276",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/09.jpg": {
+      "hash": "a5601b3d296ab1c10ec8001467098fbbac3a9a773cd7a5e3c2ea950e2c472c26",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/10.jpg": {
+      "hash": "d5732ef18841cd882609897949af31ecea06acfc4129560398d1cd5f769b9434",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/10-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/10-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/10-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/11.jpg": {
+      "hash": "5dd5eb6bf6f75d46ee25525e4637f1fd79cb9c961049d396989d1cb578b69129",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/11-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/11-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/11-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/12.jpg": {
+      "hash": "8b29f96daf8ef6cd2c027fdbb2c3da986d5276aa4481550646aabb3d2189d95e",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/12-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/12-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/12-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/portal/13.jpg": {
+      "hash": "fb41c9fa61e9a0f0ee134500ed5bccf34a95e86b9e6927fb1d4437ad826033a3",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/portal/13-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/portal/13-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/portal/13-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/01.jpg": {
+      "hash": "ce9f15e142f43993959c9cc0118db5c6787c3943f3de197f14a219b3c4cb1c87",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/02.jpg": {
+      "hash": "1a209774316e50d02a86252c18ab55a8e3d3d18e61d9fe0e955313aaf2aa4ad6",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/03.jpg": {
+      "hash": "e443f02189c3e0500fff66e3dd873575d45f35cc168b6b78981de0a1e1f6ef73",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/04.jpg": {
+      "hash": "adf562af07d4b7fe109b5164c831834e8c79721e0ab24770f32a6e4a98031fd0",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/05.jpg": {
+      "hash": "b7c89d7313ab0c32fbf21e7e258f95a073786cc407e911bc116bb39a05e1c668",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/06.jpg": {
+      "hash": "fce3404c534b109bb0ede43edc0640239d9ad858b41764e44eea58ba778759b2",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/07.jpg": {
+      "hash": "6fd6d4c263d88e9b96417e3d25be3933360b4970c14ad70c6ce5eeeb2f08b62b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/08.jpg": {
+      "hash": "310d873ac009d66e3aea4095e4b424a22cf3a8bfba0857152b73fb78bef1fc96",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rekviem-po-zhek-artu/09.png": {
+      "hash": "b94cfeade93896da91c6b7d7983648ce52bc6d9123677a7a3237a6f9d3686005",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rekviem-po-zhek-artu/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/01.png": {
+      "hash": "5081ecc87d9ffb31a551306d333689cc1e0edc6146784c62dbe2369f85f97dfb",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/02.png": {
+      "hash": "f68b3c815c4f374a2f038b5f1c35bfec54b3e9eb2921b1c6b09c2fdaccdc3929",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/03.png": {
+      "hash": "f4d00347592e28c5e6e3285bceb850a34a72ef3994c198420810f569c39a7a0b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/04.png": {
+      "hash": "7742ea33f3eb36fbc3cc921c794deaedd8caabe5d21a3f55cf23fa8817fb5961",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/05.png": {
+      "hash": "92a0c7785d121ebd2763fbb1d5ec7e029ba507d51c89f38080ba0a2cdff91ecb",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/06.png": {
+      "hash": "6b9889838d469a3a33a44306537e65083722a81fbf9c4e355ee993672677253f",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/07.png": {
+      "hash": "5abadaf1dd9389bd9a38873499b8ba06975d5d8c1698aa75ef1d148dc341c394",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/08.png": {
+      "hash": "12e93f8e7832da23c342b15c541c8ff2159eb1741fdbb027ef131db38388e5c6",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/09.png": {
+      "hash": "709ac38090a3bfd99842ac0c9f9bd6d102a39e4b8176dc5f89eae1934ebbe76c",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/rusty-box/10.png": {
+      "hash": "16b875bc4cd7b3709da9b0866a1b9c3f63e4349d4a77af65ba37654d32660f69",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/rusty-box/10-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/rusty-box/10-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/rusty-box/10-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/01.jpg": {
+      "hash": "a6686b5893b715345f712d61c79f490a5086d86eb9c0faf7ae03f11b86cd86fc",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/02.jpg": {
+      "hash": "85712285b52ea6df6a1b1eb0d4cefabfcf4b005eea100dcea0cb24795c7cf1a8",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/03.jpg": {
+      "hash": "3caf82aa17a28bc44e2ad3be585909b08636550bfa0abb73a7b9b0f84681519b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/04.jpg": {
+      "hash": "cdc08756e6a8624909497f90a7efd835f1052503ba5ea9c5630b85efc8e30131",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/05.jpg": {
+      "hash": "70a5a0e9318ae02d66ec5e693f9a07bb0e5672ef91c9f27d089d4a5dd638df35",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/06.jpg": {
+      "hash": "0ad4d12991554a47b6e5d1f67ab45ff10efdd8f65f90d0a37bae0f581b1d2722",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/07.jpg": {
+      "hash": "a3be1a3ddc005d82ea160118e80669130e7addec63c7acbecb1b67c62dbb67db",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/sleepy-stupor/08.jpg": {
+      "hash": "b188e6c7e902b018da7edcb85cbdb0900f8674857301b7884416e61b92b6c964",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/sleepy-stupor/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/01.png": {
+      "hash": "d7a839a4ed1b332f641478b92bfb6bd1237bf2adf593e2017ff09f66ef5aaf8b",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/02.png": {
+      "hash": "60dd08f74e016c84fe9c90afef415ff4442b1da46af9103a57fcadf2698d9066",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/03.png": {
+      "hash": "cb43eec9e6556086be5c087934f1e963c1cb9001c40add16fb811a576fb4103e",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/03-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/04.png": {
+      "hash": "7a26722c7ce8e0cb54912264793dbdfeb7bc54903869e581f4ff0dc8db434612",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/04-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/04-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/04-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/05.png": {
+      "hash": "e7a86591dfe7f6f928009538b067cec4e5092aa1bbf3ad02886da7fb5c5bb06d",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/05-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/05-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/05-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/06.png": {
+      "hash": "fd026e561975d1f449c261eb9fd013524b9cd7ad30d18c283ba3cb859ee7bdfe",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/06-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/06-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/06-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/07.png": {
+      "hash": "87a25bec1a5e74397e827e47711f8ea2d2e958b7693d2b84955051c92cbe0002",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/07-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/07-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/07-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/08.png": {
+      "hash": "2f7bcb69bb084ee1bebf648e754960442f1363875ab243158761a4ef0b27fdef",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/08-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/08-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/08-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/09.png": {
+      "hash": "2596d4a55e121ea3ffc8b55fcea27e5403a2dc2e05a1e7487fc31c696b982f9a",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/09-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/09-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/09-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/10.png": {
+      "hash": "69118d3ec5bccbebb75e6a6d147c00573c1737f8aec1dc9c6faf2f26de8a2017",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/10-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/10-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/10-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/11.png": {
+      "hash": "748cc4347ea5a6475e56fd7b359c2c82b933c249ca57ee46ebb9edf978e224ec",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/11-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/11-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/11-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/exhibitions/uyazvimoe-mesto/12.png": {
+      "hash": "54d4b2e2eedf98384d0716fa91d615dce38f2f7dde5986a4e974b0b6ab5f4f45",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/12-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/12-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/exhibitions/uyazvimoe-mesto/12-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/objects/object-01.png": {
+      "hash": "c86c22cf68fa864c8c6d6b652e0457252849ced1b26e3e419f1acdf015268501",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/objects/object-01-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/objects/object-01-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/objects/object-01-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/objects/object-02.png": {
+      "hash": "66476f26fdc31c4d8750d52c1eb7fd760bdb3f5c3bcbffee18876acbc9a39869",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/objects/object-02-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/objects/object-02-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/objects/object-02-2000.webp"
+        }
+      ]
+    },
+    "new-site-assets/objects/object-03.png": {
+      "hash": "78ed38f515d07381ab3d63fd8c49eee7b80fb73c4b79dc4f1e084400bc247e80",
+      "quality": 82,
+      "outputs": [
+        {
+          "width": 600,
+          "file": "new-site-assets/objects/object-03-600.webp"
+        },
+        {
+          "width": 1200,
+          "file": "new-site-assets/objects/object-03-1200.webp"
+        },
+        {
+          "width": 2000,
+          "file": "new-site-assets/objects/object-03-2000.webp"
+        }
+      ]
     }
   }
 }

@@ -1,4 +1,19 @@
 (() => {
+  // Exhibition titles and the short Text property are taken from the Notion export.
+  // The first numbered source image is the cover; Rusty box starts at 2.png.
+  const exhibitions = [
+    { id: 'polya-prisutstviya', title: 'Поля присутствия', year: '2026', description: 'ДНИ, Москва 2026', count: 30 },
+    { id: 'uyazvimoe-mesto', title: 'Уязвимое место', year: '2026', description: 'KMSA, Kazan 2026', count: 12 },
+    { id: 'portal', title: 'Portal', year: '2024', description: 'Оff-site show at Protvino, 2024', count: 13 },
+    { id: 'black-show', title: 'Black show', year: '2024', description: 'Оff-site show at Protvino, 2024', count: 12 },
+    { id: 'rusty-box', title: 'Rusty box', year: '2023', description: 'Оff-site show at Almaty, December 2023', count: 10, extension: 'png' },
+    { id: 'sleepy-stupor', title: 'Sleeppy stupor', year: '2023', description: 'Оff-site show at Almaty, 2023', count: 8 },
+    { id: 'deep-woods-cold-winters', title: 'Deep Woods Cold Winters', year: '2022', description: 'ISSMAG gallery, Moscow, 2022', count: 9 },
+    { id: 'rekviem-po-zhek-artu', title: 'Реквием по ЖЭК-арту', year: '2022', description: 'VMDPNI, Moscow, 2022', count: 9, extension: 'jpg' },
+  ];
+  const exhibitionBase = (item, index = 1) => `new-site-assets/exhibitions/${item.id}/${String(index).padStart(2, '0')}`;
+  window.cheshuyaExhibitions = exhibitions;
+  window.cheshuyaExhibitionBase = exhibitionBase;
   const header = document.querySelector('.archive-header, .catalog-header, .zine-header');
   if (!header) return;
   const isHome = header.classList.contains('archive-header');
@@ -21,6 +36,27 @@
     image.src = `images/${base}-1200.webp`;
     image.srcset = `images/${base}-600.webp 600w, images/${base}-1200.webp 1200w, images/${base}-2000.webp 2000w`;
     image.sizes = '(max-width: 700px) 100vw, 600px';
+  };
+  const exhibitionCard = (item, home = false) => {
+    const card = document.createElement('article');
+    card.className = home ? 'archive-card' : 'catalog-card';
+    card.dataset.exhibitionId = item.id;
+    const imageWrap = document.createElement('div');
+    imageWrap.className = home ? 'archive-image' : 'catalog-image';
+    const image = document.createElement('img');
+    image.alt = item.title;
+    image.loading = 'lazy';
+    setImageSource(image, exhibitionBase(item));
+    imageWrap.append(image);
+    const caption = document.createElement('div');
+    caption.className = home ? 'archive-caption' : 'catalog-caption';
+    const title = document.createElement('strong');
+    title.textContent = item.title;
+    const year = document.createElement('span');
+    year.textContent = item.year;
+    caption.append(title, year);
+    card.append(imageWrap, caption);
+    return card;
   };
   const enableRailInteractions = (rail) => {
     if (!rail || rail.dataset.carouselReady) return;
@@ -62,15 +98,94 @@
       viewport.append(slide);
     });
   };
+  const addHomeObjects = () => {
+    const viewport = document.querySelector('#objects .rail-scroll');
+    if (!viewport) return;
+    const descriptions = ['Керамический объект', 'Объект из металла', 'Объект из дерева'];
+    const bases = descriptions.map((_, index) => `new-site-assets/objects/object-0${index + 1}`);
+    const dialog = document.createElement('dialog');
+    dialog.className = 'object-lightbox';
+    dialog.setAttribute('aria-label', 'Просмотр объектов');
+    dialog.innerHTML = '<button class="object-lightbox-close" type="button" aria-label="Закрыть">×</button><div class="object-lightbox-view"><button class="object-lightbox-prev" type="button" aria-label="Предыдущее фото">←</button><img alt=""><button class="object-lightbox-next" type="button" aria-label="Следующее фото">→</button></div><span class="object-lightbox-counter" aria-live="polite"></span>';
+    document.body.append(dialog);
+    const fullImage = dialog.querySelector('img');
+    const counter = dialog.querySelector('.object-lightbox-counter');
+    let activeIndex = 0;
+    let opener = null;
+    let previousOverflow = '';
+    const render = () => {
+      fullImage.src = `images/${bases[activeIndex]}-2000.webp`;
+      fullImage.alt = descriptions[activeIndex];
+      counter.textContent = `${activeIndex + 1} / ${bases.length}`;
+    };
+    const move = (direction) => {
+      activeIndex = (activeIndex + direction + bases.length) % bases.length;
+      render();
+    };
+    const open = (index, button) => {
+      activeIndex = index;
+      opener = button;
+      render();
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+      dialog.querySelector('.object-lightbox-close').focus();
+    };
+    const slides = bases.map((base, index) => {
+      const slide = document.createElement('article');
+      slide.className = 'cyanotype-slide';
+      const button = document.createElement('button');
+      button.className = 'object-slide-button';
+      button.type = 'button';
+      button.setAttribute('aria-label', `Открыть фото: ${descriptions[index]}`);
+      const image = document.createElement('img');
+      image.alt = descriptions[index];
+      image.loading = 'lazy';
+      setImageSource(image, base);
+      button.append(image);
+      slide.append(button);
+      button.addEventListener('click', () => open(index, button));
+      return slide;
+    });
+    viewport.replaceChildren(...slides);
+    dialog.querySelector('.object-lightbox-close').addEventListener('click', () => dialog.close());
+    dialog.querySelector('.object-lightbox-prev').addEventListener('click', () => move(-1));
+    dialog.querySelector('.object-lightbox-next').addEventListener('click', () => move(1));
+    dialog.addEventListener('close', () => {
+      document.body.style.overflow = previousOverflow;
+      opener?.focus();
+    });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); move(1); }
+    });
+    let startX = 0;
+    let startY = 0;
+    dialog.querySelector('.object-lightbox-view').addEventListener('pointerdown', (event) => {
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+    dialog.querySelector('.object-lightbox-view').addEventListener('pointerup', (event) => {
+      if (event.target.closest('button')) return;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy)) move(dx > 0 ? -1 : 1);
+    });
+  };
   ready(() => {
+    const exhibitionRail = document.querySelector('#exhibitions .rail-scroll');
+    if (exhibitionRail) exhibitionRail.replaceChildren(...exhibitions.map((item) => exhibitionCard(item, true)));
     setResponsiveImage('.street-feature .feature-image img', 'new-site-assets/environment/street-feature');
+    setResponsiveImage('#zines .archive-card:nth-of-type(1) img', 'new-site-assets/zines/nedostatochno-pamyati/cover');
     setResponsiveImage('#zines .archive-card:nth-of-type(2) img', 'new-site-assets/zines/ubezhishche/IMG_20200621_165755');
     setResponsiveImage('#zines .archive-card:nth-of-type(3) img', 'new-site-assets/zines/sloi/DboMwpEfEh4');
     setResponsiveImage('#cyanotype .cyanotype-slide:nth-of-type(1) img', 'new-site-assets/cyanotypes/3Zlo6afGt3c');
     setResponsiveImage('#cyanotype .cyanotype-slide:nth-of-type(2) img', 'new-site-assets/cyanotypes/4fZgpzXQfcE');
     document.querySelector('#cyanotype .section-description')?.remove();
     addHomeCyanotypes();
+    addHomeObjects();
     setResponsiveImage('.merch-section .archive-image img', 'new-site-assets/merch/image%2074');
+    setResponsiveImage('.catalog-card-link:nth-of-type(1) .catalog-image img', 'new-site-assets/zines/nedostatochno-pamyati/cover');
     setResponsiveImage('.catalog-card-link:nth-of-type(2) .catalog-image img', 'new-site-assets/zines/ubezhishche/IMG_20200621_165755');
     setResponsiveImage('.catalog-card-link:nth-of-type(3) .catalog-image img', 'new-site-assets/zines/sloi/DboMwpEfEh4');
     document.querySelectorAll('.rail').forEach(rail => enableRailInteractions(rail));
@@ -174,12 +289,10 @@
         next.classList.add(`tab-enter-${direction}`);
         window.setTimeout(() => next.classList.remove(`tab-enter-${direction}`), 360);
       }, true));
-      const exhibitionIds = ['polya-prisutstviya', 'uyazvimoe-mesto', 'portal', 'black-show', 'rusty-box', 'sleepy-stupor'];
       document.addEventListener('click', (event) => {
         const card = event.target.closest('#exhibitions .archive-card');
         if (!card) return;
-        const cards = [...document.querySelectorAll('#exhibitions .archive-card')];
-        const id = exhibitionIds[cards.indexOf(card)];
+        const id = card.dataset.exhibitionId;
         if (!id) return;
         event.preventDefault();
         window.location.href = `exhibition.html?id=${id}`;
@@ -191,10 +304,10 @@
   }
 
   if (window.location.pathname.endsWith('catalog-exhibitions.html')) {
-    const exhibitionIds = ['polya-prisutstviya', 'uyazvimoe-mesto', 'portal', 'black-show', 'rusty-box', 'sleepy-stupor'];
-    document.querySelectorAll('.catalog-card').forEach((card, index) => {
-      const id = exhibitionIds[index];
-      if (!id) return;
+    const grid = document.querySelector('.catalog-grid');
+    if (grid) grid.replaceChildren(...exhibitions.map((item) => exhibitionCard(item)));
+    document.querySelectorAll('.catalog-card').forEach((card) => {
+      const id = card.dataset.exhibitionId;
       card.setAttribute('role', 'link');
       card.tabIndex = 0;
       const open = () => { window.location.href = `exhibition.html?id=${id}`; };

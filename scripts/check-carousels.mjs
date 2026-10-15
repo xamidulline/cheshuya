@@ -151,6 +151,11 @@ async function checkGallery(path) {
   const arrows = await page.locator(".zine-controls").boundingBox();
   const count = await stage.locator("img").count();
   assert.ok(count >= 3);
+  if (path === "/static/zine-nedostatochno-pamyati.html") assert.equal(count, 6, "Preserve all six new memory-zine photos");
+  if (path.includes("/exhibition.html")) {
+    const expected = await page.evaluate(() => window.cheshuyaExhibitions.find(item => item.id === new URLSearchParams(location.search).get("id")).count);
+    assert.equal(count, expected, "Preserve every exhibition photo");
+  }
   const expectedButtons = homeArrowStyles[path.startsWith("/static/") ? "static" : "next"];
   assert.deepEqual(await getArrowStyle(".zine-controls button:last-child"), expectedButtons, "Detail arrows must match the home arrows");
   await click(".zine-controls button:last-child");
@@ -215,6 +220,28 @@ async function checkMixedCards() {
   await checkOverflow();
 }
 
+async function checkObjectLightbox() {
+  await page.goto(origin + "/static/index.html");
+  await page.locator('.static-tabs [data-tab="inside"]').evaluate(button =>
+    button.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true })));
+  const opener = page.locator("#objects .object-slide-button").first();
+  await opener.waitFor();
+  assert.equal(await page.locator("#objects .object-slide-button").count(), 3);
+  assert.equal(await page.locator("#exhibitions .archive-card").count(), 8);
+  await opener.click();
+  await page.waitForFunction(() => document.querySelector(".object-lightbox")?.open);
+  await page.waitForFunction(() => document.querySelector(".object-lightbox img")?.naturalWidth > 0);
+  assert.equal(await page.locator(".object-lightbox-counter").textContent(), "1 / 3");
+  await page.locator(".object-lightbox-next").click();
+  assert.equal(await page.locator(".object-lightbox-counter").textContent(), "2 / 3");
+  await page.waitForFunction(() => document.querySelector(".object-lightbox img")?.naturalWidth > 0);
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => !document.querySelector(".object-lightbox").open);
+  assert.equal(await opener.evaluate(element => document.activeElement === element), true);
+  assert.equal(await page.evaluate(() => document.body.style.overflow), "");
+  await checkOverflow();
+}
+
 try {
   for (const [home, otherRatio] of [["/static/index.html", 4 / 3], ["/cheshuya/", 1]]) {
     await page.goto(origin + home);
@@ -226,10 +253,20 @@ try {
   }
   await checkMixedCards();
   console.log("PASS unequal card widths and gaps");
+  await checkObjectLightbox();
+  console.log("PASS new object photos, exhibition cards and lightbox");
   for (const path of [
     "/static/zine-nedostatochno-pamyati.html", "/static/zine-ubezhishche.html", "/static/zine-sloi.html",
     "/static/cyanotype.html", "/cheshuya/zines/nedostatochno-pamyati/",
     "/cheshuya/zines/ubezhishche/", "/cheshuya/zines/sloi/",
+    "/static/exhibition.html?id=polya-prisutstviya",
+    "/static/exhibition.html?id=uyazvimoe-mesto",
+    "/static/exhibition.html?id=portal",
+    "/static/exhibition.html?id=black-show",
+    "/static/exhibition.html?id=rusty-box",
+    "/static/exhibition.html?id=sleepy-stupor",
+    "/static/exhibition.html?id=deep-woods-cold-winters",
+    "/static/exhibition.html?id=rekviem-po-zhek-artu",
   ]) {
     await checkGallery(path);
     console.log("PASS gallery: home-style horizontal motion and buttons, stable stage, contain, rapid clicks, native swipe, overflow", path);
