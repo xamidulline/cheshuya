@@ -193,6 +193,8 @@ export function createCardCarousel(viewport: HTMLElement) {
 
 // Detail galleries use the same measured horizontal rail as the home page.
 export function createImageGallery(stage: HTMLElement, onChange: (index: number) => void = () => {}) {
+  stage.tabIndex = 0;
+  stage.setAttribute("aria-label", "Фотографии работ");
   const photos = Array.from(stage.querySelectorAll("img"));
   const carousel = stage.parentElement || stage;
   const controller = createCardCarousel(stage);

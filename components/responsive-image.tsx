@@ -25,7 +25,7 @@ export function ResponsiveImage({ src, sizes, priority = false, fill = false, de
     sizes={srcSet ? sizes : undefined}
     data-gallery-src={deferred ? fallback : undefined}
     data-gallery-srcset={deferred ? srcSet : undefined}
-    loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "auto"} decoding="async"
+    loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : "low"} decoding="async"
     style={fill ? { position: "absolute", inset: 0, width: "100%", height: "100%", ...style } : style}
   />;
 }

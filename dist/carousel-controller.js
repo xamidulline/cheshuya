@@ -195,6 +195,8 @@ function createCardCarousel(viewport) {
 
 // Detail galleries use the same measured horizontal rail as the home page.
 function createImageGallery(stage, onChange = () => {}) {
+  stage.tabIndex = 0;
+  stage.setAttribute("aria-label", "Фотографии работ");
   const photos = Array.from(stage.querySelectorAll("img"));
   const carousel = stage.parentElement || stage;
   const controller = createCardCarousel(stage);

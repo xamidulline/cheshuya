@@ -63,3 +63,5 @@
 @media(min-width:701px){.zine-layout{min-height:540px}.zine-carousel{height:max(540px,calc(100svh - 165px))}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .art-catalog .catalog-image img,.art-catalog .catalog-card:hover .catalog-image img{object-fit:contain;transform:none}
+.art-catalog .object-slide-button{background:transparent!important}
+.zine-slide:focus-visible{outline:2px solid #171717;outline-offset:2px}

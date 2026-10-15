@@ -52,6 +52,7 @@ async function measure(origin,path) {
     ...window.auditVitals,
     bytes:performance.getEntriesByType("resource").reduce((s,r)=>s+r.encodedBodySize,0),
     resources:performance.getEntriesByType("resource").length,
+    waterfall:performance.getEntriesByType("resource").map(r=>({name:r.name.replace(location.origin,""),start:r.startTime,duration:r.duration,bytes:r.encodedBodySize})),
     fcp:performance.getEntriesByName("first-contentful-paint")[0]?.startTime,
     dcl:performance.getEntriesByType("navigation")[0].domContentLoadedEventEnd,
     overflow:document.documentElement.scrollWidth>innerWidth,
@@ -123,6 +124,14 @@ try {
             checkedAssets.add(url);
             const response=await context.request.head(url);
             assert.ok(response.ok(),"Missing image variant: "+url);
+          }
+          if(path==="catalog-objects.html"){
+            await page.locator("[data-object-index]").first().click();
+            await page.waitForFunction(()=>document.querySelector(".object-lightbox")?.open);
+            await page.locator(".object-lightbox-next").click();
+            assert.equal(await page.locator(".object-lightbox-counter").textContent(),"2 / 3");
+            await page.keyboard.press("Escape");
+            await page.waitForFunction(()=>document.body.style.overflow==="");
           }
           if(path==="index.html"){
             await page.locator("#outside-tab").press("ArrowRight");

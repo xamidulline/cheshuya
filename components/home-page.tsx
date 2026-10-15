@@ -25,6 +25,22 @@ export function HomePage() {
   const [compact, setCompact] = useState(false);
   const [activeTab, setActiveTab] = useState("outside");
   const t = getCopy(locale);
+  useEffect(() => { document.documentElement.lang = locale; return () => { document.documentElement.lang = "ru"; }; }, [locale]);
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const restoreSection = () => {
+      const target = decodeURIComponent(window.location.hash.slice(1));
+      if (!target) return;
+      setActiveTab(["inside", "exhibitions", "objects", "drawings"].includes(target) ? "inside" : "outside");
+      clearTimeout(timer);
+      timer = setTimeout(() => document.getElementById(target)?.scrollIntoView({
+        block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+      }), 30);
+    };
+    restoreSection();
+    window.addEventListener("hashchange", restoreSection);
+    return () => { clearTimeout(timer); window.removeEventListener("hashchange", restoreSection); };
+  }, []);
   useEffect(() => { const onScroll = () => setCompact(window.scrollY > 95); onScroll(); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []);
   const scrollTo = (tab: string, id: string) => { setActiveTab(tab); window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" }), 30); };
   const moveStreetImage = (event: React.PointerEvent<HTMLElement>) => { const rect = event.currentTarget.getBoundingClientRect(); const relativeX = (event.clientX - rect.left) / rect.width; const relativeY = (event.clientY - rect.top) / rect.height; event.currentTarget.style.setProperty("--street-x", `${(relativeX - .5) * 5}px`); event.currentTarget.style.setProperty("--street-y", `${(relativeY - .5) * 5}px`); event.currentTarget.style.setProperty("--halo-x", `${relativeX * 100}%`); event.currentTarget.style.setProperty("--halo-y", `${relativeY * 100}%`); };
