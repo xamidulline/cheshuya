@@ -1,19 +1,15 @@
 name: Publish site
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
     environment:
@@ -23,6 +19,17 @@ jobs:
     steps:
       - name: Get site files
         uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install existing image tools
+        run: pnpm install --frozen-lockfile
+      - name: Generate light gallery previews
+        run: node scripts/generate-thumbnails.mjs
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:

@@ -39,7 +39,7 @@ async function measure(origin,path) {
     new PerformanceObserver(list=>{for(const e of list.getEntries())window.auditVitals.lcp=e.startTime;}).observe({type:"largest-contentful-paint",buffered:true});
     new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.auditVitals.cls+=e.value;}).observe({type:"layout-shift",buffered:true});
   });
-  await page.goto(origin+"/"+path,{waitUntil:"load",timeout:90000});
+  await page.goto(origin+"/"+path,{waitUntil:"domcontentloaded",timeout:90000});
   await wait(4000);
   const data=await page.evaluate(()=>({
     ...window.auditVitals,

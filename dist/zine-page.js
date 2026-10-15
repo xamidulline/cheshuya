@@ -15,9 +15,5 @@
     if (images.length < 2) document.querySelector('.zine-controls')?.setAttribute('hidden', '');
     carousel?.setAttribute('tabindex', '0');
     carousel?.setAttribute('aria-label', 'Галерея изображений');
-    document.querySelector('.zine-language')?.addEventListener('click', event => {
-      event.currentTarget.textContent = event.currentTarget.textContent === 'En' ? 'Ru' : 'En';
-    });
-    document.querySelector('.zine-burger')?.addEventListener('click', () => location.href = 'index.html');
   });
 })();

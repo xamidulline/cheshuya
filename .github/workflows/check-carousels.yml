@@ -29,6 +29,8 @@ jobs:
           cache: pnpm
       - name: Install existing site dependencies
         run: pnpm install --frozen-lockfile
+      - name: Generate light gallery previews
+        run: node scripts/generate-thumbnails.mjs
       - name: Build the Next.js site
         run: npm run build
       - name: Install browser check tools on the runner
@@ -40,10 +42,13 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
         run: node scripts/check-carousels.mjs
       - name: Prepare original site for comparison on GitHub
+        if: always()
         run: |
+          git fetch --no-tags --depth=1 origin 3f0a91e1d9adb3a0cae04dd4099172fdfa8c6fc9
           mkdir -p "$RUNNER_TEMP/site-before"
           git archive 3f0a91e1d9adb3a0cae04dd4099172fdfa8c6fc9 dist | tar -x -C "$RUNNER_TEMP/site-before"
       - name: Audit loading and page actions
+        if: always()
         env:
           NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
           AUDIT_BASE_DIR: ${{ runner.temp }}/site-before/dist

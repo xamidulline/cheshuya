@@ -15,7 +15,7 @@
     const carousel = document.querySelector('.zine-carousel');
     const thumbnailsRoot = document.querySelector('.cyanotype-thumbnails');
     if (thumbnailsRoot) {
-      thumbnailsRoot.innerHTML = images.map((image, imageIndex) => `<button data-index="${imageIndex}" aria-label="Изображение ${imageIndex + 1}"><img alt="" src="${image.src}" srcset="${image.srcset}" sizes="160px" loading="lazy"></button>`).join('');
+      thumbnailsRoot.innerHTML = images.map((image, imageIndex) => `<button data-index="${imageIndex}" aria-label="Изображение ${imageIndex + 1}"><img alt="" src="${image.src.replace("-1200.webp", "-192.webp")}" width="62" height="62" decoding="async" loading="lazy"></button>`).join('');
     }
     const thumbnails = [...document.querySelectorAll('.cyanotype-thumbnails button')];
     const gallery = window.CheshuyaCarousel.mountImageGallery(document.querySelector('.zine-slide'), images, index => {
@@ -30,6 +30,5 @@
     document.querySelector('.next')?.addEventListener('click', () => gallery.move(1));
     carousel?.setAttribute('tabindex', '0');
     thumbnails.forEach(button => button.addEventListener('click', () => gallery.show(Number(button.dataset.index))));
-    document.querySelector('.zine-language')?.addEventListener('click', (event) => { event.currentTarget.textContent = event.currentTarget.textContent === 'En' ? 'Ru' : 'En'; });
   });
 })();

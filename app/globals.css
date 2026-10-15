@@ -51,3 +51,8 @@
 .rail-arrow:focus-visible,.zine-controls button:focus-visible{outline:2px solid #171717;outline-offset:2px}
 .archive-page .rail-arrow:active{transform:translateY(-50%) scale(.96)}
 .zine-controls button:active{transform:scale(.96)}
+
+/* Keep content reachable on short desktop viewports and at increased text size. */
+.zine-page{height:auto;min-height:100svh;overflow:visible}
+@media(min-width:701px){.zine-layout{min-height:540px}.zine-carousel{height:max(540px,calc(100svh - 165px))}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

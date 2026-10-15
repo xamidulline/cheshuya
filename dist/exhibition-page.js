@@ -3,7 +3,10 @@
   const id = new URLSearchParams(window.location.search).get('id');
   const currentIndex = exhibitions.findIndex(item => item.id === id);
   const item = exhibitions[currentIndex];
-  if (!item) return;
+  if (!item) {
+    location.replace('catalog-exhibitions.html');
+    return;
+  }
 
   document.title = `${item.title} — Чешуя`;
   document.querySelector('.zine-info h1').textContent = item.title;

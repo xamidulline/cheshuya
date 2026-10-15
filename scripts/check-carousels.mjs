@@ -238,6 +238,7 @@ async function checkObjectLightbox() {
   await page.keyboard.press("Escape");
   await page.waitForFunction(() => !document.querySelector(".object-lightbox").open);
   assert.equal(await opener.evaluate(element => document.activeElement === element), true);
+  await page.waitForFunction(() => document.body.style.overflow === "");
   assert.equal(await page.evaluate(() => document.body.style.overflow), "");
   await checkOverflow();
 }

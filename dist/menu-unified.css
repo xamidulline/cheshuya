@@ -35,7 +35,7 @@ html,body{min-height:100%;background:#fff;overscroll-behavior-y:none}.archive-pa
 .rail-scroll{touch-action:pan-x pan-y pinch-zoom;overscroll-behavior-x:contain}.zine-carousel{touch-action:auto}
 .logo-stage img.home-at-stage{opacity:1;position:relative!important;left:auto!important;top:auto!important;width:142px;height:142px;transform:none!important}
 @media(min-width:641px){.logo-stage img.home-at-stage{width:162px;height:162px}}
-@media(prefers-reduced-motion:no-preference){body{animation:site-page-in .32s ease-out both}@keyframes site-page-in{from{opacity:0}to{opacity:1}}}
+
 
 /* Telegram's iOS browser already offsets its viewport below the Dynamic Island.
    Applying safe-area padding once more leaves a visible white gap while scrolling. */
