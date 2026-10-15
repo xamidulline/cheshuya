@@ -218,6 +218,7 @@ function createImageGallery(stage, onChange = () => {}) {
   const prepare = (index) => {
     const photo = photos[index];
     if (!photo) return;
+    photo.fetchPriority = "high";
     loadPhoto(photo);
     const ticket = ++preloadVersion;
     // The visible image gets the connection first; then warm its two neighbours.

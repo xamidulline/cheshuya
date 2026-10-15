@@ -18,6 +18,7 @@ jobs:
     env:
       NEXT_TELEMETRY_DISABLED: 1
       NEXT_PUBLIC_GITHUB_PAGES: "true"
+      AUDIT_BASE_SHA: ${{ github.event.pull_request.base.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -44,9 +45,9 @@ jobs:
       - name: Prepare original site for comparison on GitHub
         if: always()
         run: |
-          git fetch --no-tags --depth=1 origin 3f0a91e1d9adb3a0cae04dd4099172fdfa8c6fc9
+          git fetch --no-tags --depth=1 origin "$AUDIT_BASE_SHA"
           mkdir -p "$RUNNER_TEMP/site-before"
-          git archive 3f0a91e1d9adb3a0cae04dd4099172fdfa8c6fc9 dist | tar -x -C "$RUNNER_TEMP/site-before"
+          git archive "$AUDIT_BASE_SHA" dist | tar -x -C "$RUNNER_TEMP/site-before"
       - name: Audit loading and page actions
         if: always()
         env:

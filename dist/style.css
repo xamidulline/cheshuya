@@ -65,3 +65,4 @@
 .art-catalog .catalog-image img,.art-catalog .catalog-card:hover .catalog-image img{object-fit:contain;transform:none}
 .art-catalog .object-slide-button{background:transparent!important}
 .zine-slide:focus-visible{outline:2px solid #171717;outline-offset:2px}
+html{scrollbar-gutter:stable}

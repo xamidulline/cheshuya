@@ -118,7 +118,7 @@ try {
             await page.setViewportSize({width,height:844});
             assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"Overflow "+path+" at "+width);
           }
-          for(const asset of await page.locator("img").evaluateAll(nodes=>nodes.flatMap(i=>[i.getAttribute("src"),i.dataset.gallerySrc,...(i.getAttribute("srcset")||i.dataset.gallerySrcset||"").split(",").map(s=>s.trim().split(" ")[0])]).filter(Boolean))){
+          for(const asset of await page.locator("img").evaluateAll(nodes=>nodes.flatMap(i=>[i.getAttribute("src"),i.dataset.src,i.dataset.gallerySrc,...(i.getAttribute("srcset")||i.dataset.srcset||i.dataset.gallerySrcset||"").split(",").map(s=>s.trim().split(" ")[0])]).filter(Boolean))){
             const url=new URL(asset,page.url()).href;
             if(checkedAssets.has(url))continue;
             checkedAssets.add(url);
