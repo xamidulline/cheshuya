@@ -27,5 +27,5 @@
   </main>
   
   
-</body>
+<script>document.addEventListener("DOMContentLoaded",()=>{const update=()=>{document.querySelectorAll("a[href]").forEach(link=>{const url=new URL(link.href);if(url.origin==="https://xamidulline.github.io"&&url.pathname.startsWith("/cheshuya/")&&url.pathname.endsWith(".html"))link.href="https://raw.githack.com/xamidulline/cheshuya/preview-gallery-controls/dist/"+url.pathname.slice("/cheshuya/".length)+url.search+url.hash;});};update();new MutationObserver(update).observe(document.body,{childList:true,subtree:true});});</script></body>
 </html>
