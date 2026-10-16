@@ -7,6 +7,7 @@ export function createLogoParticles(image, options = {}) {
   let held = false, pointerId = null, heldKey = null, previousTime = 0;
   let scale = 0, scaleVelocity = 0, layoutFrame = null;
   let insets = { left: 0, top: 0, right: 0, bottom: 0 };
+  const headerControls = document.querySelector(".archive-header .header-controls");
   const hitArea = document.createElement("span");
   hitArea.className = "logo-hit-area";
   hitArea.setAttribute("aria-hidden", "true");
@@ -21,7 +22,7 @@ export function createLogoParticles(image, options = {}) {
       return;
     }
     const stage = image.closest(".logo-stage")?.getBoundingClientRect();
-    const top = Math.max(0, stage?.top ?? 0, rect.top - 10);
+    const top = Math.max(0, stage?.top ?? 0, rect.top - 10, (headerControls?.getBoundingClientRect().bottom ?? -4) + 4);
     const bottom = Math.min(innerHeight, stage?.bottom ?? innerHeight, rect.bottom + 10);
     Object.assign(hitArea.style, { display: bottom > top ? "block" : "none",
       left: Math.max(0, rect.left - 10) + "px", top: top + "px",

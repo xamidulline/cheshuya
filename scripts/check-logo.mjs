@@ -106,6 +106,13 @@ try {
     await page.waitForTimeout(2300);
     await page.reload();
     await checkEntry();
+    await page.mouse.move(rect.x + rect.width / 2, rect.y + rect.height / 2);
+    await page.mouse.down(); await page.waitForTimeout(200); await page.mouse.up();
+    await page.evaluate(() => window.scrollTo({ top: 30, behavior: "instant" }));
+    await page.waitForTimeout(150);
+    const areaTop = (await page.locator(".logo-hit-area").boundingBox()).y;
+    const controls = await page.locator(".header-controls").boundingBox();
+    assert.ok(areaTop >= controls.y + controls.height, "Expanded hit area must not cover header controls");
     await page.evaluate(() => window.scrollTo({ top: 500, behavior: "instant" }));
     await page.waitForFunction(() => document.querySelector(".archive-header").classList.contains("is-compact"));
     assert.equal(await page.locator(".logo-particles-layer").count(), 0);

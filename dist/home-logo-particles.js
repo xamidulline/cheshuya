@@ -17,6 +17,7 @@ if (image && header && stage) {
     stage.removeEventListener("pointerdown", down);
     image.removeEventListener("focus", prepare);
     image.removeEventListener("keydown", keyDown);
+    image.removeEventListener("contextmenu", contextMenu);
     window.removeEventListener("pointerup", up);
     window.removeEventListener("pointercancel", up);
     window.removeEventListener("keyup", keyUp);
@@ -60,10 +61,12 @@ if (image && header && stage) {
   const keyUp = event => { if (event.key === key) release(); };
   const hover = event => { if (canPlay() && near(event)) prepare(); };
   const hidden = () => { if (document.hidden) release(); };
+  const contextMenu = event => { if (pressed && canPlay()) event.preventDefault(); };
   stage.addEventListener("pointermove", hover, { passive: true });
   stage.addEventListener("pointerdown", down);
   image.addEventListener("focus", prepare);
   image.addEventListener("keydown", keyDown);
+  image.addEventListener("contextmenu", contextMenu);
   window.addEventListener("pointerup", up);
   window.addEventListener("pointercancel", up);
   window.addEventListener("keyup", keyUp);
