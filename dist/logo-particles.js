@@ -5,9 +5,28 @@ export function createLogoParticles(image, options = {}) {
   let template = null, loading = null, layer = null, svg = null, particles = [];
   let frame = null, sequence = 0, disposed = false, savedStyle = null;
   let held = false, pointerId = null, heldKey = null, previousTime = 0;
-  let scale = 0, scaleVelocity = 0;
+  let scale = 0, scaleVelocity = 0, layoutFrame = null;
+  const hitArea = document.createElement("span");
+  hitArea.className = "logo-hit-area";
+  hitArea.setAttribute("aria-hidden", "true");
+  hitArea.style.cssText = "display:none;position:fixed;z-index:33;cursor:pointer;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none";
+  (image.parentElement || document.body).append(hitArea);
   const eligible = () => !disposed && !motion.matches
     && image.isConnected && image.getBoundingClientRect().width >= 100 && (options.canPlay?.() ?? true);
+  const positionHitArea = () => {
+    const rect = image.getBoundingClientRect();
+    if (!eligible() || rect.bottom <= 0 || rect.top >= innerHeight) {
+      hitArea.style.display = "none";
+      return;
+    }
+    const stage = image.closest(".logo-stage")?.getBoundingClientRect();
+    const top = Math.max(0, stage?.top ?? 0, rect.top - 10);
+    const bottom = Math.min(innerHeight, stage?.bottom ?? innerHeight, rect.bottom + 10);
+    Object.assign(hitArea.style, { display: bottom > top ? "block" : "none",
+      left: Math.max(0, rect.left - 10) + "px", top: top + "px",
+      width: Math.min(innerWidth, rect.right + 10) - Math.max(0, rect.left - 10) + "px",
+      height: Math.max(0, bottom - top) + "px" });
+  };
   const restoreImage = () => {
     if (!savedStyle) return;
     const { opacity, opacityPriority, transition, transitionPriority } = savedStyle;
@@ -28,13 +47,15 @@ export function createLogoParticles(image, options = {}) {
     restoreImage();
   };
   const release = () => {
+    const wasHeld = held;
     held = false;
     heldKey = null;
     const captured = pointerId;
     pointerId = null;
     if (captured !== null && image.hasPointerCapture?.(captured)) image.releasePointerCapture(captured);
+    if (wasHeld && layer && frame === null) frame = requestAnimationFrame(follow);
   };
-  const stop = () => { sequence++; release(); clear(); };
+  const stop = () => { sequence++; release(); clear(); positionHitArea(); };
   const load = () => {
     if (template) return Promise.resolve(template);
     if (!loading) {
@@ -63,12 +84,15 @@ export function createLogoParticles(image, options = {}) {
     }
     return loading;
   };
+  const appearance = () => {
+    if (!layer || !svg) return;
+    svg.style.filter = getComputedStyle(image).filter;
+    layer.style.outline = image.matches(":focus-visible") ? "2px solid var(--text)" : "none";
+  };
   const position = () => {
     if (!layer || !svg) return;
     const rect = image.getBoundingClientRect();
     Object.assign(layer.style, { left: rect.left + "px", top: rect.top + "px", width: rect.width + "px", height: rect.height + "px" });
-    svg.style.filter = getComputedStyle(image).filter;
-    layer.style.outline = image.matches(":focus-visible") ? "2px solid var(--text)" : "none";
   };
   // A critically damped spring keeps both position and velocity when a hold is reversed.
   const advance = (value, velocity, target, speed, dt) => {
@@ -92,14 +116,16 @@ export function createLogoParticles(image, options = {}) {
       settled = settled && Math.abs(progress - target) < .0002 && Math.abs(part.velocity) < .001;
     });
     position();
-    if (!held && settled) {
+    if (settled) {
       // Keep the same SVG surface at rest: swapping back to a rasterized <img>
       // here can change edge rendering and produce a visible final twitch.
-      scale = scaleVelocity = previousTime = 0;
-      svg.style.removeProperty("transform");
+      scale = target;
+      scaleVelocity = previousTime = 0;
+      if (!held) svg.style.removeProperty("transform");
       particles.forEach(part => {
-        part.progress = part.velocity = 0;
-        part.path.style.removeProperty("transform");
+        part.progress = target;
+        part.velocity = 0;
+        if (!held) part.path.style.removeProperty("transform");
       });
       return;
     }
@@ -130,6 +156,7 @@ export function createLogoParticles(image, options = {}) {
     image.style.setProperty("transition-property", "transform", "important");
     image.style.setProperty("opacity", "0", "important");
     position();
+    appearance();
     return true;
   };
   const hold = () => {
@@ -146,6 +173,7 @@ export function createLogoParticles(image, options = {}) {
   const pointerDown = event => {
     if (!event.isPrimary || event.button !== 0 || pointerId !== null || !hold()) return;
     pointerId = event.pointerId;
+    image.focus({ preventScroll: true });
     image.setPointerCapture?.(pointerId);
   };
   const pointerEnd = event => { if (event.pointerId === pointerId) release(); };
@@ -158,13 +186,14 @@ export function createLogoParticles(image, options = {}) {
   const keyUp = event => { if (event.key === heldKey) { event.preventDefault(); release(); } };
   const preventNative = event => { if (eligible()) event.preventDefault(); };
   const syncIdle = () => {
-    if (!layer || frame !== null) return;
-    // The header updates its scroll geometry in the preceding animation frame callback.
-    frame = requestAnimationFrame(time => {
-      frame = null;
+    if (disposed || layoutFrame !== null) return;
+    layoutFrame = requestAnimationFrame(() => {
+      layoutFrame = null;
+      positionHitArea();
+      if (!layer) return;
       if (!eligible()) { stop(); return; }
-      if (held) { follow(time); return; }
       position();
+      appearance();
     });
   };
   const themeObserver = new MutationObserver(syncIdle);
@@ -173,6 +202,9 @@ export function createLogoParticles(image, options = {}) {
   const prefetch = () => { syncIdle(); if (eligible()) load().catch(() => {}); };
   const reduce = () => { if (motion.matches) stop(); };
   const hidden = () => { if (document.hidden) stop(); };
+  hitArea.addEventListener("pointerdown", pointerDown);
+  hitArea.addEventListener("pointerenter", prefetch);
+  hitArea.addEventListener("contextmenu", preventNative);
   image.addEventListener("pointerdown", pointerDown);
   window.addEventListener("pointerup", pointerEnd);
   window.addEventListener("pointercancel", pointerEnd);
@@ -188,8 +220,10 @@ export function createLogoParticles(image, options = {}) {
   image.addEventListener("pointerenter", prefetch);
   image.addEventListener("focus", prefetch);
   motion.addEventListener("change", reduce);
+  motion.addEventListener("change", syncIdle);
   document.addEventListener("visibilitychange", hidden);
   window.addEventListener("pagehide", stop);
+  syncIdle();
   return {
     hold, release, isInteractive: eligible, stop,
     destroy() {
@@ -197,6 +231,8 @@ export function createLogoParticles(image, options = {}) {
       stop();
       abort.abort();
       themeObserver.disconnect();
+      if (layoutFrame !== null) cancelAnimationFrame(layoutFrame);
+      hitArea.remove();
       image.removeEventListener("pointerdown", pointerDown);
       window.removeEventListener("pointerup", pointerEnd);
       window.removeEventListener("pointercancel", pointerEnd);
@@ -212,6 +248,7 @@ export function createLogoParticles(image, options = {}) {
       image.removeEventListener("pointerenter", prefetch);
       image.removeEventListener("focus", prefetch);
       motion.removeEventListener("change", reduce);
+      motion.removeEventListener("change", syncIdle);
       document.removeEventListener("visibilitychange", hidden);
       window.removeEventListener("pagehide", stop);
     },

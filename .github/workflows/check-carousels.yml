@@ -40,12 +40,18 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
         run: node scripts/check-carousels.mjs
+      - name: Check logo interaction and reload stability
+        env:
+          NODE_PATH: ${{ runner.temp }}/carousel-check/node_modules
+        run: node scripts/check-logo.mjs
       - name: Prepare original site for comparison on GitHub
         if: success()
         run: |
           git fetch --no-tags --depth=1 origin "$AUDIT_BASE_SHA"
           mkdir -p "$RUNNER_TEMP/site-before"
           git archive "$AUDIT_BASE_SHA" dist | tar -x -C "$RUNNER_TEMP/site-before"
+          # Deployment generates these variants; artwork is unchanged in this PR.
+          cp -an dist/images/. "$RUNNER_TEMP/site-before/dist/images/"
       - name: Audit loading and page actions
         if: success()
         env:

@@ -1,4 +1,4 @@
-import { createLogoParticles } from "./logo-particles.js";
+import { createLogoParticles } from "./logo-particles.js?v=logo-final-1";
 const image = document.querySelector(".logo-stage img");
 const header = document.querySelector(".archive-header");
 if (image && header) {
