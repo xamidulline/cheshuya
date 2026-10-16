@@ -3,7 +3,7 @@
 import { ResponsiveImage, getResponsiveImageSource } from "@/components/responsive-image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Instagram, Menu, Youtube } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createLogoParticles } from "@/lib/logo-particles";
 import { mountHeadingTyping } from "@/lib/heading-typing";
 import { usePhotoLightbox } from "@/components/use-photo-lightbox";
@@ -45,13 +45,11 @@ export function HomePage() {
     const root = document.querySelector<HTMLElement>(".archive-page");
     if (root) return mountHeadingTyping(root);
   }, []);
-  const logoParticles = useRef<ReturnType<typeof createLogoParticles> | null>(null);
   useEffect(() => {
     const image = document.querySelector<HTMLImageElement>(".logo-stage img");
     if (!image) return;
     const controller = createLogoParticles(image, { canPlay: () => !document.querySelector(".archive-header")?.classList.contains("is-compact") });
-    logoParticles.current = controller;
-    return () => { controller.destroy(); logoParticles.current = null; };
+    return () => controller.destroy();
   }, []);
   const [compact, setCompact] = useState(false);
   const [activeTab, setActiveTab] = useState("outside");
@@ -101,7 +99,7 @@ export function HomePage() {
       <Button className="header-logo" variant="ghost" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Наверх"><ResponsiveImage src="/media/cheshuya-figma-logo.svg" alt="Чешуя" width={112} height={112} sizes="37px" priority /></Button>
       <div className="header-controls"><ThemeToggle /><Sheet><SheetTrigger asChild><Button variant="outline" size="icon" aria-label="Открыть меню"><Menu size={18}/></Button></SheetTrigger><SiteMenu onNavigate={scrollTo} /></Sheet></div>
     </header>
-    <section className="logo-stage" onPointerMove={moveStreetImage} onPointerLeave={resetStreetImage}><ResponsiveImage src="/media/cheshuya-figma-logo.svg" alt="Чешуя" width={290} height={290} sizes="162px" priority role="button" tabIndex={0} aria-label={locale === "ru" ? "Притянуть частицы логотипа" : "Attract logo particles"} onClick={() => logoParticles.current?.play()} onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); logoParticles.current?.play(); } }} /></section>
+    <section className="logo-stage" onPointerMove={moveStreetImage} onPointerLeave={resetStreetImage}><ResponsiveImage src="/media/cheshuya-figma-logo.svg" alt="Чешуя" width={290} height={290} sizes="162px" priority role="button" tabIndex={0} aria-label={locale === "ru" ? "Зажмите, чтобы притянуть частицы" : "Hold to attract logo particles"} /></section>
     <Tabs value={activeTab} onValueChange={setActiveTab} className="archive-shell" id="outside">
         <TabsList><TabsTrigger value="outside" onPointerDown={() => setActiveTab("outside")}>{t.outside.toLowerCase()}</TabsTrigger><TabsTrigger value="inside" onPointerDown={() => setActiveTab("inside")}>{t.inside.toLowerCase()}</TabsTrigger></TabsList>
       <TabsContent value="outside" className="tab-content">

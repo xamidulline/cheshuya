@@ -6,5 +6,5 @@ if (image && header) {
     assetUrl: new URL("./media/cheshuya-figma-logo.svg", import.meta.url).href,
     canPlay: () => !header.classList.contains("is-compact"),
   });
-  window.CheshuyaLogo = { play: source => source === image && controller.play() };
+  window.CheshuyaLogo = { handles: source => source === image && controller.isInteractive() };
 }

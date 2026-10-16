@@ -1,1 +1,1 @@
-export function createLogoParticles(image: HTMLImageElement, options?: { assetUrl?: string; canPlay?: () => boolean }): { play(): boolean; stop(): void; destroy(): void };
+export function createLogoParticles(image: HTMLImageElement, options?: { assetUrl?: string; canPlay?: () => boolean }): { hold(): boolean; release(): void; isInteractive(): boolean; stop(): void; destroy(): void };
