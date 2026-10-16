@@ -53,3 +53,11 @@ button,input,textarea,select{font-family:var(--site-font)}
 .catalog-header,.zine-header{justify-content:space-between}
 .catalog-header>a:not(.site-home-logo),.zine-return>a{display:grid;place-items:center;width:37px;height:37px;padding:0}
 .top-drawer>.menu-preferences{width:min(640px,100%);margin:12px auto 0}
+
+/* Reveal letters once on first appearance; invisible letters still reserve space. */
+.heading-type-pending .heading-type-char{opacity:0}
+.heading-type-running .heading-type-char{animation:heading-letter 1ms step-end both;animation-delay:calc(var(--letter-index) * var(--typing-step))}
+@keyframes heading-letter{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.heading-type-pending .heading-type-char,.heading-type-running .heading-type-char{opacity:1;animation:none!important}}
+
+.archive-page :is(h1,h2) .heading-type-visual,.archive-page :is(h1,h2) .heading-type-char{display:inline;font:inherit;color:inherit;line-height:inherit}

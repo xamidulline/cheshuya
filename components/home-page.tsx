@@ -4,6 +4,7 @@ import { ResponsiveImage, getResponsiveImageSource } from "@/components/responsi
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Instagram, Menu, Youtube } from "lucide-react";
 import { useEffect, useState } from "react";
+import { mountHeadingTyping } from "@/lib/heading-typing";
 import { usePhotoLightbox } from "@/components/use-photo-lightbox";
 import { useCardCarousel } from "@/components/use-card-carousel";
 import { Button } from "@/components/ui/button";
@@ -39,6 +40,10 @@ export function HomePage() {
   const openObject = usePhotoLightbox(objectPhotos, "Просмотр объектов");
   const openDrawing = usePhotoLightbox(drawingPhotos, "Просмотр рисунков");
   const { locale } = useSitePreferences();
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>(".archive-page");
+    if (root) return mountHeadingTyping(root);
+  }, []);
   const [compact, setCompact] = useState(false);
   const [activeTab, setActiveTab] = useState("outside");
   const t = getCopy(locale);

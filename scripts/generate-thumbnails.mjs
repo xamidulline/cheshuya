@@ -39,3 +39,5 @@ await copyFile("public/gallery-ui.css", "dist/gallery-ui.css");
 await copyFile("lib/photo-zoom.js", "dist/photo-zoom.js");
 
 await copyFile("public/site-theme.css", "dist/site-theme.css");
+
+await copyFile("lib/heading-typing.js", "dist/heading-typing.js");
