@@ -30,7 +30,7 @@ export const getCopy = (locale: Locale) => copy[locale];
 export const zines = [
   { title: "Недостаточно памяти", year: "2026", image: "/media/nedostatochno-pamyati-2026.webp", slug: "nedostatochno-pamyati" },
   { title: "Убежище", year: "2020", image: "/media/IMG_20200621_165755.jpg", slug: "ubezhishche" },
-  { title: "Слои", year: "2021", image: "/media/xjsg8vQO7rI.jpg", slug: "sloi" },
+  { title: "Слои", year: "2021", image: "/images/new-site-assets/zines/sloi/xjsg8vQO7rI-1200.webp", slug: "sloi" },
 ];
 
 export const zineDetails = {
