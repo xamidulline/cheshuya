@@ -61,3 +61,6 @@ button,input,textarea,select{font-family:var(--site-font)}
 @media(prefers-reduced-motion:reduce){.heading-type-pending .heading-type-char,.heading-type-running .heading-type-char{opacity:1;animation:none!important}}
 
 .archive-page :is(h1,h2) .heading-type-visual,.archive-page :is(h1,h2) .heading-type-char{display:inline;font:inherit;color:inherit;line-height:inherit}
+
+.logo-stage img[role=button]{cursor:pointer}
+.logo-stage img[role=button]:focus-visible{outline:2px solid var(--text);outline-offset:5px;border-radius:4px}

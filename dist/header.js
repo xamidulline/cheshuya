@@ -214,6 +214,7 @@
       }
       const progress = Math.max(0, Math.min(1, scrollY / 135));
       const size = startSize + (37 - startSize) * progress;
+      logo.setAttribute('aria-label', size >= 100 ? (locale === 'en' ? 'Attract logo particles' : 'Притянуть частицы логотипа') : (locale === 'en' ? 'Back to top' : 'Наверх'));
       logo.classList.remove('home-at-stage');
       logo.classList.add('home-moving-logo');
       logo.style.top = (center - scrollY + (headerY - center + scrollY) * progress) + 'px';
@@ -239,8 +240,9 @@
     logo.tabIndex = 0;
     logo.setAttribute('role', 'button');
     logo.setAttribute('aria-label', 'Наверх');
-    logo.addEventListener('click', top);
-    logo.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); top(); } });
+    const activateLogo = () => { if (!window.CheshuyaLogo?.play(logo)) top(); };
+    logo.addEventListener('click', activateLogo);
+    logo.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateLogo(); } });
     logo.style.cursor = 'pointer';
     measure();
   }
