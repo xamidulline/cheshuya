@@ -43,9 +43,25 @@
     requestAnimationFrame(() => section.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'start' }));
   };
   window.CheshuyaHome = { openSection };
-  const openHash = () => { if (location.hash) openSection(decodeURIComponent(location.hash.slice(1))); };
-  addEventListener('hashchange', openHash);
-  openHash();
+  const navigation = performance.getEntriesByType("navigation")[0];
+  const freshEntry = navigation?.type !== "back_forward";
+  const startAtTop = () => {
+    if (location.hash) return;
+    if (tabs[0]) select(tabs[0]);
+    scrollTo({ top: 0, left: 0, behavior: "instant" });
+  };
+  const openHash = () => {
+    if (!location.hash) return startAtTop();
+    let target;
+    try { target = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    openSection(target);
+  };
+  addEventListener("hashchange", openHash);
+  addEventListener("pageshow", event => {
+    if (!event.persisted && freshEntry && !location.hash) startAtTop();
+  });
+  if (location.hash) openHash();
+  else if (freshEntry) startAtTop();
   document.querySelectorAll('.rail').forEach(rail => {
     const viewport = rail.querySelector('.rail-scroll');
     const controller = window.CheshuyaCarousel.createCardCarousel(viewport);

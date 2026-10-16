@@ -49,18 +49,39 @@ export function HomePage() {
   const t = getCopy(locale);
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-    const restoreSection = () => {
-      const target = decodeURIComponent(window.location.hash.slice(1));
-      if (!target) return;
+    const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    const freshEntry = navigation?.type !== "back_forward";
+    const startAtTop = () => {
+      if (window.location.hash) return;
+      clearTimeout(timer);
+      setActiveTab("outside");
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    };
+    const restoreSection = (initial = false) => {
+      let target: string;
+      try { target = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+      if (!target) {
+        if (!initial || freshEntry) startAtTop();
+        return;
+      }
       setActiveTab(["inside", "exhibitions", "objects", "drawings"].includes(target) ? "inside" : "outside");
       clearTimeout(timer);
       timer = setTimeout(() => document.getElementById(target)?.scrollIntoView({
         block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
       }), 30);
     };
-    restoreSection();
-    window.addEventListener("hashchange", restoreSection);
-    return () => { clearTimeout(timer); window.removeEventListener("hashchange", restoreSection); };
+    const hashChange = () => restoreSection();
+    const pageShow = (event: PageTransitionEvent) => {
+      if (!event.persisted && freshEntry && !window.location.hash) startAtTop();
+    };
+    restoreSection(true);
+    window.addEventListener("hashchange", hashChange);
+    window.addEventListener("pageshow", pageShow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("hashchange", hashChange);
+      window.removeEventListener("pageshow", pageShow);
+    };
   }, []);
   useEffect(() => { const onScroll = () => setCompact(window.scrollY > 95); onScroll(); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []);
   const scrollTo = (tab: string, id: string) => { setActiveTab(tab); window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" }), 30); };
