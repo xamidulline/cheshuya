@@ -52,6 +52,7 @@ try {
       assert.equal(await page.locator(".logo-particles-layer").count(), 0, "No auto animation on entry");
       assert.equal(await page.locator(".logo-stage img").evaluate(image => getComputedStyle(image).opacity), "1");
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+      assert.equal(await page.evaluate(() => performance.getEntriesByType("resource").filter(r => r.name.includes("/logo-particles.js")).length), 0, "Optional animation code is not downloaded on startup");
       assert.equal(await page.evaluate(() => performance.getEntriesByType("resource").filter(r => r.initiatorType === "fetch" && r.name.includes("cheshuya-figma-logo")).length), 0, "Effect asset is not fetched on startup");
     };
     await page.goto(origin + "/index.html");
@@ -60,12 +61,12 @@ try {
     await checkEntry();
     const image = page.locator(".logo-stage img");
     const rect = await image.boundingBox();
-    const target = await page.locator(".logo-hit-area").boundingBox();
-    assert.ok(target.width >= rect.width + 19, "Larger invisible hit area");
     const x = rect.x - 8, y = rect.y + rect.height / 2;
     await page.mouse.move(x, y);
     await page.mouse.down();
     await page.waitForFunction(() => document.querySelector(".logo-particles-layer svg"));
+    const target = await page.locator(".logo-hit-area").boundingBox();
+    assert.ok(target.width >= rect.width + 19, "Larger invisible hit area");
     await page.waitForTimeout(1800);
     const before = await page.locator(".logo-particles-layer svg").evaluate(svg => {
       window.heldLogoSvg = svg;
@@ -125,10 +126,10 @@ try {
   page.on("pageerror", error => errors.push(error.message));
   await page.goto(origin + "/index.html");
   const cdp = await context.newCDPSession(page);
-  await page.locator(".logo-hit-area").waitFor({ state: "visible" });
-  const area = await page.locator(".logo-hit-area").boundingBox();
-  const x = area.x + 6, y = area.y + area.height / 2;
+  const original = await page.locator(".logo-stage img").boundingBox();
+  const x = original.x - 8, y = original.y + original.height / 2;
   await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x, y, id: 1 }] });
+  await page.waitForFunction(() => document.querySelector(".logo-particles-layer"));
   await page.waitForTimeout(500);
   assert.equal(await page.locator(".logo-particles-layer").count(), 1);
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
