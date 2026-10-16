@@ -3,7 +3,7 @@ export type Locale = "ru" | "en";
 const copy = {
   ru: {
     outside: "Работа в среде", inside: "Работа с материалом", menu: "Меню", close: "Закрыть",
-    streetTitle: "В среде", insideTitle: "В материале",
+    streetTitle: "Уличное рисование",
     streetText: "Поиск новых мест и сооружений за пределами привычных маршрутов. Работа начинается со знакомства с пространством и его особенностями. Рисунок создаётся на месте, без предварительного эскиза, и меняется в зависимости от поверхности и окружающих условий.",
     instagram: "Instagram", video: "Видео", zines: "Зины", cyanotype: "Цианотипия", shirts: "Футболки",
     zinesText: "Издания о месте, слоях и маршрутах уличных работ.",
@@ -14,7 +14,7 @@ const copy = {
   },
   en: {
     outside: "Work in context", inside: "Work with material", menu: "Menu", close: "Close",
-    streetTitle: "In context", insideTitle: "In material",
+    streetTitle: "Street drawing",
     streetText: "Searching for new places and structures beyond familiar routes. The work begins with getting to know the space and its particular features. The drawing is created on site, without a preliminary sketch, and changes in response to the surface and surrounding conditions.",
     instagram: "Instagram", video: "Video", zines: "Zines", cyanotype: "Cyanotype", shirts: "T-shirts",
     zinesText: "Publications about place, layers and routes of street works.",
