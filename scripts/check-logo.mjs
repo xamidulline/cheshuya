@@ -31,8 +31,11 @@ try {
       const sample = () => {
         const image = document.querySelector(".logo-stage img");
         if (image && image.complete && image.naturalWidth && getComputedStyle(image).opacity !== "0") {
-          const rect = image.getBoundingClientRect();
-          window.logoFrames.push({ x: rect.x, y: rect.y, w: rect.width, h: rect.height });
+          const rect = image.getBoundingClientRect(), style = getComputedStyle(image);
+          const inset = (a, b) => (parseFloat(a) || 0) + (parseFloat(b) || 0);
+          const left = inset(style.paddingLeft, style.borderLeftWidth), right = inset(style.paddingRight, style.borderRightWidth);
+          const top = inset(style.paddingTop, style.borderTopWidth), bottom = inset(style.paddingBottom, style.borderBottomWidth);
+          window.logoFrames.push({ x: rect.x + left, y: rect.y + top, w: rect.width - left - right, h: rect.height - top - bottom });
         }
         if (performance.now() - start < 1100) requestAnimationFrame(sample);
       };
@@ -87,6 +90,13 @@ try {
       const svg = document.querySelector(".logo-particles-layer svg");
       return svg && !svg.style.transform && [...svg.querySelectorAll("path")].every(path => !path.style.transform);
     });
+    const contentSize = await image.evaluate(image => {
+      const rect = image.getBoundingClientRect(), style = getComputedStyle(image);
+      return { width: rect.width - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight),
+        height: rect.height - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) };
+    });
+    const resting = await page.locator(".logo-particles-layer svg").boundingBox();
+    assert.ok(Math.abs(resting.width - contentSize.width) < .1 && Math.abs(resting.height - contentSize.height) < .1, "SVG matches original content size, without hit padding");
     await page.mouse.down(); await page.waitForTimeout(100); await page.mouse.up();
     await page.mouse.down(); await page.waitForTimeout(200); await page.mouse.up();
     await page.waitForTimeout(2300);
@@ -128,6 +138,15 @@ try {
   await cdp.send("Input.dispatchTouchEvent", { type: "touchCancel", touchPoints: [] });
   await page.waitForTimeout(2300);
   assert.equal(await page.locator(".logo-particles-layer svg").evaluate(svg => svg.style.transform), "");
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x, y, id: 1 }] });
+  for (let step = 1; step <= 6; step++) {
+    await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x, y: y - step * 16, id: 1 }] });
+    await page.waitForTimeout(35);
+  }
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+  await page.waitForFunction(() => scrollY > 25);
+  await page.waitForTimeout(400);
+  assert.equal(await page.locator(".logo-particles-layer").count(), 0, "Touch scroll cancels held effect");
   await context.close();
   assert.deepEqual(errors, []);
   console.log("PASS logo: mobile touch hold, release, cancellation; no browser errors");
